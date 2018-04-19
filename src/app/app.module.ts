@@ -11,6 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { CadastroPage } from './../pages/cadastro/cadastro';
 
 import { BrMaskerModule } from 'brmasker-ionic-3';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { BrMaskerModule } from 'brmasker-ionic-3';
     StatusBar,
     SplashScreen,
     HttpClient,
+    AuthServiceProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
