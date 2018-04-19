@@ -6,6 +6,7 @@
     <ion-col></ion-col>
   </ion-row>
   <div class="login-box">
+    <ng-container *ngIf="loginForm">
     <form [formGroup]="loginForm">
       <ion-row>
         <ion-col>
@@ -26,5 +27,6 @@
         </ion-col>
       </ion-row>      
     </form>
+    </ng-container>
   </div>
 </ion-content>
