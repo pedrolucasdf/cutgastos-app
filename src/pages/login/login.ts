@@ -1,5 +1,8 @@
+import { JsonReturn } from './../../models/jsonReturn';
+import { AuthServiceProvider } from './../../providers/auth-service/auth-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validator, Validators} from "@angular/forms";
 
 /**
  * Generated class for the LoginPage page.
@@ -15,15 +18,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  loginForm: FormGroup;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams, 
+    public formBuilder: FormBuilder,
+    public authServiceProvider: AuthServiceProvider
+  ) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    //On init
+    this.loginForm = this.formBuilder.group({
+      email: this.formBuilder.control("", [Validators.required]),
+      senha: this.formBuilder.control("", [Validators.required])
+    });
   }
 
   onClickEntrar(){
     //Chama o provider que autentica o usuário
+    this.authServiceProvider.autentication(this.loginForm.value)
+    .subscribe((response: JsonReturn) => {
+      if(response.status === "SUCESSO"){
+        //Login correto
+      }
+      else{
+        //Tratamento de erro
+      }
+    });
   }
 
   onClickNovaConta(){
