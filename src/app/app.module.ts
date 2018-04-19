@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -21,6 +22,7 @@ import { BrMaskerModule } from 'brmasker-ionic-3';
   imports: [
     BrowserModule,
     BrMaskerModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -33,6 +35,7 @@ import { BrMaskerModule } from 'brmasker-ionic-3';
   providers: [
     StatusBar,
     SplashScreen,
+    HttpClient,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
