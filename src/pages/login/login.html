@@ -22,8 +22,8 @@
       </ion-row>      
       <ion-row>
         <ion-col class="signup-col">
-          <button ion-button class="submit-btn" full type="submit" >Entrar</button>
-          <button ion-button class="register-btn" block clear >Criar nova conta</button>
+          <button ion-button class="submit-btn" (click)="onClickEntrar()"full type="submit" >Entrar</button>
+          <button ion-button class="register-btn" (click)="onClickNovaConta()" block clear >Criar nova conta</button>
         </ion-col>
       </ion-row>      
     </form>
