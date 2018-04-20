@@ -13,47 +13,49 @@
 
 <ion-content padding>
   <div class="cadastro-box">
-    <form>
-      <ion-row>
-        <ion-col>
-          <ion-list inset>
-            <ion-item>
-              <ion-input type="text" name="cpf" placeholder="CPF" [brmasker]="{mask:'000.000.000-00', len:14, type:'num'}" required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input type="text" name="nome" placeholder="Nome" required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input type="text" name="endereco" placeholder="Endereço" ></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input type="text" name="email" placeholder="Email" required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input type="password" name="senha" placeholder="Senha" required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input type="text" name="telefone" placeholder="Telefone" [brmasker]="{mask:'(00) 00000-0000', len:15, type:'num'}"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input type="text" name="nascimento" placeholder="Data de Nascimento" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label>Sexo</ion-label>
-              <ion-select>
-                <ion-option value="F">Feminino</ion-option>
-                <ion-option value="M">Masculino</ion-option>
-              </ion-select>
-            </ion-item>
-          </ion-list>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <button ion-button class="submit-btn" full type="submit" >Criar Conta</button>
-        </ion-col>
-      </ion-row>
-    </form>
+    <ng-container *ngIf="cadastroForm" >
+      <form [formGroup]="cadastroForm">
+        <ion-row>
+          <ion-col>
+            <ion-list inset>
+              <ion-item>
+                <ion-input formControlName="cpf" type="text" name="cpf" placeholder="CPF" [brmasker]="{mask:'000.000.000-00', len:14, type:'num'}" required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input formControlName="nome" type="text" name="nome" placeholder="Nome" required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input formControlName="endereco" type="text" name="endereco" placeholder="Endereço" ></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input formControlName="email" type="text" name="email" placeholder="Email" required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input formControlName="senha" type="password" name="senha" placeholder="Senha" required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input formControlName="telefone" type="text" name="telefone" placeholder="Telefone" [brmasker]="{mask:'(00) 00000-0000', len:15, type:'num'}"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input formControlName="nascimento" type="text" name="nascimento" placeholder="Data de Nascimento" [brmasker]="{mask:'00/00/0000', len:10, type:'num'}"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Sexo</ion-label>
+                <ion-select formControlName="sexo">
+                  <ion-option value="F">Feminino</ion-option>
+                  <ion-option value="M">Masculino</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <button ion-button (click)="onClickCadastro"class="submit-btn" full type="submit" >Criar Conta</button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ng-container>
   </div>
 
 </ion-content>
