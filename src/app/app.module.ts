@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -10,6 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { CadastroPage } from './../pages/cadastro/cadastro';
 
 import { BrMaskerModule } from 'brmasker-ionic-3';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { BrMaskerModule } from 'brmasker-ionic-3';
   imports: [
     BrowserModule,
     BrMaskerModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -33,6 +36,8 @@ import { BrMaskerModule } from 'brmasker-ionic-3';
   providers: [
     StatusBar,
     SplashScreen,
+    HttpClient,
+    AuthServiceProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
