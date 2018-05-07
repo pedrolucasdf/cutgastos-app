@@ -1,3 +1,5 @@
+import { ListaEletrodomesticosPage } from './../pages/lista-eletrodomesticos/lista-eletrodomesticos';
+import { CadastroEletrodomesticoPage } from './../pages/cadastro-eletrodomestico/cadastro-eletrodomestico';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -12,13 +14,20 @@ import { CadastroPage } from './../pages/cadastro/cadastro';
 
 import { BrMaskerModule } from 'brmasker-ionic-3';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { ContextChatProvider } from '../providers/context-chat/context-chat';
+import { CallChatProvider } from '../providers/call-chat/call-chat';
+import { AlertController } from 'ionic-angular';
+import { SaveDataProvider } from '../providers/save-data/save-data';
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     LoginPage,
-    CadastroPage
+    CadastroPage,
+    CadastroEletrodomesticoPage,
+    ListaEletrodomesticosPage
   ],
   imports: [
     BrowserModule,
@@ -31,14 +40,20 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     MyApp,
     HomePage,
     LoginPage,
-    CadastroPage
+    CadastroPage,
+    CadastroEletrodomesticoPage,
+    ListaEletrodomesticosPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     HttpClient,
     AuthServiceProvider,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ContextChatProvider,
+    AlertController,
+    CallChatProvider,
+    SaveDataProvider
   ]
 })
 export class AppModule {}

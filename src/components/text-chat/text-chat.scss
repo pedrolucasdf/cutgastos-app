@@ -1,0 +1,55 @@
+text-chat {
+
+    .container {
+      background-color: #000d18;
+      width: 100% !important;
+      height: 96% !important;
+      position: sticky;
+    }
+  
+    .bodyChatRow {
+      background-color: royalblue;
+     }
+  
+    .inputRow {
+      background-color: #000d18;
+      min-width: 100% !important;
+      padding: 0;
+      bottom: 0;
+      position: absolute !important;
+      padding-right: 1em;
+  
+    }
+  
+    .ionTextarea {
+      height: 2em;
+      width: 90%;
+      border-radius: 50px;
+      background: white !important;
+      margin: 5px 5px;
+      background: #efefef !important;
+    }
+  
+    .text-input-md {
+      margin: 6px 6px;
+    }
+  
+    .text-input-ios {
+      margin: 6px 6px;
+  
+    }
+   
+    .send {
+      width: 2em;
+      height: 2em;
+      padding: 0;
+      margin-bottom: 0.2em;
+      position: absolute !important;
+      bottom: 5px;
+      right: 5px;
+    }
+    .button{
+      margin-top: 4em;
+    }
+  }
+  
