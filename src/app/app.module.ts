@@ -1,3 +1,4 @@
+import { TabsPage } from './../pages/tabs/tabs';
 import { ListaEletrodomesticosPage } from './../pages/lista-eletrodomesticos/lista-eletrodomesticos';
 import { CadastroEletrodomesticoPage } from './../pages/cadastro-eletrodomestico/cadastro-eletrodomestico';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -27,7 +28,8 @@ import { SaveDataProvider } from '../providers/save-data/save-data';
     LoginPage,
     CadastroPage,
     CadastroEletrodomesticoPage,
-    ListaEletrodomesticosPage
+    ListaEletrodomesticosPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { SaveDataProvider } from '../providers/save-data/save-data';
     LoginPage,
     CadastroPage,
     CadastroEletrodomesticoPage,
-    ListaEletrodomesticosPage
+    ListaEletrodomesticosPage,
+    TabsPage
   ],
   providers: [
     StatusBar,
