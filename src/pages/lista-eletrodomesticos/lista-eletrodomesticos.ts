@@ -16,7 +16,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ListaEletrodomesticosPage {
 
+  listaEletrodomesticos: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.listaEletrodomesticos = [
+      {
+        "nome":"Geladeira",
+        "potencia":"45kW/h",
+      },
+      {
+        "nome":"TV",
+        "potencia":"100kW/h",
+      },
+      {
+        "nome":"Microondas",
+        "potencia":"32kW/h",
+      }
+    ]
   }
 
   ionViewDidLoad() {

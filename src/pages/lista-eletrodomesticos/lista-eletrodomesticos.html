@@ -10,11 +10,25 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
   <ion-list>
-    <ion-item ngFor="let eletrodomestico of listaEletrodomesticos">
-      {{eletrodomestico}}
-    </ion-item>
+    <ion-card *ngFor="let eletrodomestico of listaEletrodomesticos">
+      <ion-row>
+        <ion-col center text-center>
+          <div class="dados-eletrodomestico">{{eletrodomestico.nome}}</div>
+        </ion-col>
+        <ion-col center text-center>
+          <div class="dados-eletrodomestico">{{eletrodomestico.potencia}}</div>
+        </ion-col>
+        <ion-col center text-center>
+          <button ion-button item-end clear>
+            <ion-icon name="ios-create-outline"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>      
+    </ion-card>
   </ion-list>
+  <ion-fab right bottom>
+      <button ion-fab (click)="onClickAdd()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>

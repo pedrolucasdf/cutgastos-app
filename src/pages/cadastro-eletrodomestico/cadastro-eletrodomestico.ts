@@ -22,4 +22,8 @@ export class CadastroEletrodomesticoPage {
     console.log('ionViewDidLoad CadastroEletrodomesticoPage');
   }
 
+  onClickAdicionar(){
+    
+  }
+
 }
