@@ -1,5 +1,5 @@
 import { JsonReturn } from './../../models/jsonReturn'; 
-import { SignInServiceProvider } from './../../providers/sign-in-service/sign-in-service';
+//import { SignInServiceProvider } from './../../providers/sign-in-service/sign-in-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validator, Validators} from "@angular/forms";
@@ -24,7 +24,7 @@ export class CadastroPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public formBuilder: FormBuilder,
-    public singIn: SignInServiceProvider
+    //public singIn: SignInServiceProvider
   ) {}
 
   ionViewDidLoad() {
@@ -41,7 +41,7 @@ export class CadastroPage {
   }
 
   onClickCadastro(){
-    this.singIn.createAccount(this.cadastroForm.value)
+    /*this.singIn.createAccount(this.cadastroForm.value)
     .subscribe((response: JsonReturn)=> {
       if(response.status === "SUCESSO"){
         //Cadastro realizado com sucesso
@@ -49,7 +49,7 @@ export class CadastroPage {
       else{
         //Cadastro não pode ser realizado
       }
-    })
+    }).*/
   }
 
 }

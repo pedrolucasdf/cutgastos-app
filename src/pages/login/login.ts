@@ -36,7 +36,7 @@ export class LoginPage {
   }
 
   onClickEntrar(){
-    //Chama o provider que autentica o usuário
+    /*//Chama o provider que autentica o usuário
     this.authServiceProvider.autentication(this.loginForm.value)
     .subscribe((response: JsonReturn) => {
       if(response.status === "SUCESSO"){
@@ -45,7 +45,7 @@ export class LoginPage {
       else{
         //Tratamento de erro
       }
-    });
+    });*/
   }
 
   onClickNovaConta(){
