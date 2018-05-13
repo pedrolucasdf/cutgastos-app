@@ -1,3 +1,5 @@
+import { TabsPage } from './../tabs/tabs';
+import { CadastroPage } from './../cadastro/cadastro';
 import { JsonReturn } from './../../models/jsonReturn';
 import { AuthServiceProvider } from './../../providers/auth-service/auth-service';
 import { Component } from '@angular/core';
@@ -46,10 +48,13 @@ export class LoginPage {
         //Tratamento de erro
       }
     });*/
+    this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.push(TabsPage);
   }
 
   onClickNovaConta(){
     //Redireciona para a tela de cadastro.
+    this.navCtrl.push(CadastroPage);
   }
 
 }

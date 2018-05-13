@@ -1,3 +1,4 @@
+import { CadastroEletrodomesticoPage } from './../cadastro-eletrodomestico/cadastro-eletrodomestico';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -20,6 +21,10 @@ export class ListaEletrodomesticosPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListaEletrodomesticosPage');
+  }
+
+  onClickAdd(){
+    this.navCtrl.push(CadastroEletrodomesticoPage);
   }
 
 }

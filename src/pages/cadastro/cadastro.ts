@@ -50,6 +50,7 @@ export class CadastroPage {
         //Cadastro não pode ser realizado
       }
     }).*/
+    this.navCtrl.pop();
   }
 
 }
