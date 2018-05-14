@@ -59,9 +59,7 @@ export class ContextChatProvider {
         this.context = res.context;
         console.log("resposta bot: ", res);
 
-        if (type == "voice") {
-
-        }
+  
       },
         err => {
           let erro: any = JSON.parse(err._body);

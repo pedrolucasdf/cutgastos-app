@@ -17,9 +17,9 @@ export class CallChatProvider {
   private headers: Headers;
   private options: RequestOptions;
 
-  private username: string;
-  private password: string;
-  private workspaceId: string;
+  private username: "09bffc5e-3b00-4559-9950-3841ca217fbb";
+  private password: "WMLZQBs1jHRz";
+  private workspaceId: "94b7fdf3-d5a0-4bdd-b45d-2b67d6d4ef20";
   private target: string;
 
   constructor(public http: Http,
