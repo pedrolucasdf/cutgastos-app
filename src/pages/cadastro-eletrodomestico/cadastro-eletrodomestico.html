@@ -6,33 +6,35 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Cadastro de Eletrodomesticos</ion-title>
+    <ion-title>{{titulo}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <div class="cadEletrodomestico-box">
-    <form>
-      <ion-row>
-        <ion-col>
-          <ion-list inset>
-            <ion-item>
-              <ion-input type="text" placeholder="Nome do Eletrodomestico"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input type="text" placeholder="Descrição"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input type="text" placeholder="Potência (kW/h)"></ion-input>
-            </ion-item>
-            <ion-item>
-              <button ion-button>Tirar Foto</button>
-            </ion-item>
-            <button ion-button class="submit-btn" (click)="onClickAdicionar()"full type="submit" >Adicionar</button>
-          </ion-list>
-        </ion-col>
-      </ion-row>
-    </form>
+    <ng-container *ngIf="cadastroEletrodomesticoForm">
+      <form [formGroup]="cadastroEletrodomesticoForm">
+        <ion-row>
+          <ion-col>
+            <ion-list inset>
+              <ion-item>
+                <ion-input formControlName="nome" type="text" placeholder="Nome do Eletrodomestico"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input formControlName="descricao" type="text" placeholder="Descrição"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input formControlName="potencia" type="text" placeholder="Potência (kW/h)"></ion-input>
+              </ion-item>
+              <ion-item>
+                <button ion-button>Tirar Foto</button>
+              </ion-item>
+                <button ion-button class="submit-btn" (click)="onClickAdicionar()"full type="submit" >{{btnTexto}}</button>
+              </ion-list>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ng-container>
   </div>
 
 </ion-content>

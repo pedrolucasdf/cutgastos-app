@@ -21,7 +21,7 @@
           <div class="dados-eletrodomestico">{{eletrodomestico.potencia}}</div>
         </ion-col>
         <ion-col center text-center>
-          <button ion-button item-end clear>
+          <button ion-button item-end clear (click)="onClickEdit(eletrodomestico)">
             <ion-icon name="ios-create-outline"></ion-icon>
           </button>
         </ion-col>

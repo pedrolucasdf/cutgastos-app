@@ -40,7 +40,12 @@ export class ListaEletrodomesticosPage {
   }
 
   onClickAdd(){
-    this.navCtrl.push(CadastroEletrodomesticoPage);
+    this.navCtrl.push(CadastroEletrodomesticoPage, 0);
+  }
+
+  onClickEdit(eletrodomestico){
+    console.log(eletrodomestico);
+    this.navCtrl.push(CadastroEletrodomesticoPage, eletrodomestico);
   }
 
 }
