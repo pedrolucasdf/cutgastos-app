@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ContextChatProvider } from './../../providers/context-chat/context-chat';
+import { ContextChatProvider } from '../../providers/context-chat/context-chat';
 
 
 @Component({
