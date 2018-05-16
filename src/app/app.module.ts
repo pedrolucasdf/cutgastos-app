@@ -7,11 +7,16 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { BodyTextChatComponent } from './../components/body-text-chat/body-text-chat';
+import { TextChatComponent } from './../components/text-chat/text-chat';
+import { IonicStorageModule } from '@ionic/storage';
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { CadastroPage } from './../pages/cadastro/cadastro';
+import { ChatSparkPage } from './../pages/chat-spark/chat-spark';
 
 import { BrMaskerModule } from 'brmasker-ionic-3';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
@@ -19,6 +24,8 @@ import { ContextChatProvider } from '../providers/context-chat/context-chat';
 import { CallChatProvider } from '../providers/call-chat/call-chat';
 import { AlertController } from 'ionic-angular';
 import { SaveDataProvider } from '../providers/save-data/save-data';
+import { Http, HttpModule } from '@angular/http';
+
 
 
 @NgModule({
@@ -29,12 +36,18 @@ import { SaveDataProvider } from '../providers/save-data/save-data';
     CadastroPage,
     CadastroEletrodomesticoPage,
     ListaEletrodomesticosPage,
+    ChatSparkPage,
+    BodyTextChatComponent,
+    TextChatComponent
+,
     TabsPage
   ],
   imports: [
     BrowserModule,
     BrMaskerModule,
     HttpClientModule,
+    HttpModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -45,9 +58,12 @@ import { SaveDataProvider } from '../providers/save-data/save-data';
     CadastroPage,
     CadastroEletrodomesticoPage,
     ListaEletrodomesticosPage,
-    TabsPage
+    TabsPage,
+    ChatSparkPage,
+    TextChatComponent, BodyTextChatComponent
   ],
   providers: [
+    HttpModule,
     StatusBar,
     SplashScreen,
     HttpClient,
@@ -56,7 +72,10 @@ import { SaveDataProvider } from '../providers/save-data/save-data';
     ContextChatProvider,
     AlertController,
     CallChatProvider,
-    SaveDataProvider
+    SaveDataProvider,
+    BodyTextChatComponent
+    
+
   ]
 })
 export class AppModule {}

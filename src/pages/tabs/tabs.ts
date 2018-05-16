@@ -1,3 +1,4 @@
+import { ChatSparkPage } from './../chat-spark/chat-spark';
 import { ListaEletrodomesticosPage } from './../lista-eletrodomesticos/lista-eletrodomesticos';
 import { NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
@@ -11,7 +12,8 @@ export class TabsPage {
 
   tab1Root = HomePage;
   tab2Root = ListaEletrodomesticosPage;
-  //tab3Root = ContactPage;
+  tab3Root = ChatSparkPage; //ContactPage;
+  tab4Root = ChatSparkPage;
 
   constructor( 
     public navCtrl: NavController

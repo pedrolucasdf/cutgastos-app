@@ -20,7 +20,7 @@ export class CallChatProvider {
   private username: "09bffc5e-3b00-4559-9950-3841ca217fbb";
   private password: "WMLZQBs1jHRz";
   private workspaceId: "94b7fdf3-d5a0-4bdd-b45d-2b67d6d4ef20";
-  private target: string;
+  private target: "generic";
 
   constructor(public http: Http,
               /*private saveDataProvider: SaveDataProvider,*/
@@ -32,7 +32,6 @@ export class CallChatProvider {
 
   setChatbot(inputParam): Observable<any> {
     console.log(inputParam);
-    if (this.target == "generic") {
       if (this.username == null || this.password == null || this.workspaceId == null) {
         this.presentAlert("Verifique as credenciais na tela de configuração");
       }
@@ -45,14 +44,6 @@ export class CallChatProvider {
           .post(html, inputParam, this.options)
           .map(this.extractData).catch(this.handleError);
       }
-    }
-    else {
-      console.log("=== Orquestrador Spark ===");
-      let html = " "
-      return this.http
-        .post(html, inputParam, this.options)
-        .map(this.extractData).catch(this.handleError)
-    }
   }
 
   presentAlert(errorMsg: string) {
