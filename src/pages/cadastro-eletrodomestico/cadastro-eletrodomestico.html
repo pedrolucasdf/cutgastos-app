@@ -27,7 +27,7 @@
                 <ion-input formControlName="potencia" type="text" placeholder="Potência (kW/h)"></ion-input>
               </ion-item>
               <ion-item>
-                <button ion-button>Tirar Foto</button>
+                <button ion-button class="foto-btn" (click)="onClickTirarFoto()"> Tirar Foto </button>
               </ion-item>
                 <button ion-button class="submit-btn" (click)="onClickAdicionar()"full type="submit" >{{btnTexto}}</button>
               </ion-list>

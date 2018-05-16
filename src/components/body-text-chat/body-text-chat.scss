@@ -1,7 +1,7 @@
 body-text-chat {
 
     #bodyChat {
-      background-color: #000d18; //000d18
+      background-color: #fff; //000d18
       max-height: 100%;
       min-width: 100%;
       position: absolute;
@@ -117,11 +117,11 @@ body-text-chat {
   
     /* green bubble */
     .green {
-      background: #229BF6;
+      background: #fab83d;
       filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#7acd47', endColorstr='#ace44b');
     }
     .green:after {
-      border-bottom-color: #229BF6;
+      border-bottom-color: #fab83d;
     }
   
   

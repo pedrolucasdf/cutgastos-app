@@ -1,7 +1,7 @@
+import { CameraProvider } from './../../providers/camera/camera';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
 /**
  * Generated class for the CadastroEletrodomesticoPage page.
  *
@@ -22,9 +22,8 @@ export class CadastroEletrodomesticoPage {
   cadastroEletrodomesticoForm : FormGroup;
 
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    public formBuilder: FormBuilder
+    public navCtrl: NavController, public navParams: NavParams, 
+    public formBuilder: FormBuilder, public CameraProvider: CameraProvider
   ) { }
 
   ionViewDidLoad() {
@@ -53,5 +52,8 @@ export class CadastroEletrodomesticoPage {
   onClickAdicionar(){
     
   }
+  onClickTirarFoto(){
+    this.CameraProvider.TirarFoto();
 
+  }
 }

@@ -25,6 +25,7 @@ import { CallChatProvider } from '../providers/call-chat/call-chat';
 import { AlertController } from 'ionic-angular';
 import { SaveDataProvider } from '../providers/save-data/save-data';
 import { Http, HttpModule } from '@angular/http';
+import { CameraProvider } from '../providers/camera/camera';
 
 
 
@@ -73,7 +74,9 @@ import { Http, HttpModule } from '@angular/http';
     AlertController,
     CallChatProvider,
     SaveDataProvider,
-    BodyTextChatComponent
+    CameraProvider,
+    BodyTextChatComponent,
+    
     
 
   ]

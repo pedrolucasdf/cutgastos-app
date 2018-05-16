@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 
 import { ContextChatProvider } from './../../providers/context-chat/context-chat';
 
@@ -13,8 +13,8 @@ export class BodyTextChatComponent {
   constructor(private contextChatProvider: ContextChatProvider) { }
 
   ngOnInit() {
-    //this.contextChatProvider.arrayMensagensEmitter
-      //.subscribe(res => this.setArrayMsg(res));
+    this.contextChatProvider.arrayMensagensEmitter
+      .subscribe(res => this.setArrayMsg(res));
   }
 
   

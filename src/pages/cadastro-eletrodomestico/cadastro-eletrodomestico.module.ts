@@ -1,6 +1,8 @@
+import { CameraProvider } from './../../providers/camera/camera';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { CadastroEletrodomesticoPage } from './cadastro-eletrodomestico';
+
 
 @NgModule({
   declarations: [
@@ -9,5 +11,8 @@ import { CadastroEletrodomesticoPage } from './cadastro-eletrodomestico';
   imports: [
     IonicPageModule.forChild(CadastroEletrodomesticoPage),
   ],
+  providers: [
+    CameraProvider
+  ]
 })
 export class CadastroEletrodomesticoPageModule {}

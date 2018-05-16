@@ -12,7 +12,7 @@ export class TabsPage {
 
   tab1Root = HomePage;
   tab2Root = ListaEletrodomesticosPage;
-  tab3Root = ChatSparkPage; //ContactPage;
+  //tab3Root = ContactPage;
   tab4Root = ChatSparkPage;
 
   constructor( 

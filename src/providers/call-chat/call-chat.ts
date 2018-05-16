@@ -17,8 +17,6 @@ export class CallChatProvider {
   private headers: Headers;
   private options: RequestOptions;
 
-  private username: "09bffc5e-3b00-4559-9950-3841ca217fbb";
-  private password: "WMLZQBs1jHRz";
   private workspaceId: "94b7fdf3-d5a0-4bdd-b45d-2b67d6d4ef20";
   private target: "generic";
 
@@ -32,18 +30,13 @@ export class CallChatProvider {
 
   setChatbot(inputParam): Observable<any> {
     console.log(inputParam);
-      if (this.username == null || this.password == null || this.workspaceId == null) {
-        this.presentAlert("Verifique as credenciais na tela de configuração");
-      }
-      else {
         console.log("=== Conversation Generico ===");
-        let html = `https://gateway.watsonplatform.net/conversation/api/v1/workspaces/${this.workspaceId}/message?version=2017-05-26`
+        let html = `https://gateway.watsonplatform.net/conversation/api/v1/workspaces/94b7fdf3-d5a0-4bdd-b45d-2b67d6d4ef20/message?version=2017-05-26`
         this.headers.delete('Authorization');
-        this.headers.append('Authorization', `Basic ${btoa(this.username + ':' + this.password)}`);
+        this.headers.append('Authorization', `Basic ${btoa("09bffc5e-3b00-4559-9950-3841ca217fbb" + ':' + "WMLZQBs1jHRz")}`);
         return this.http
           .post(html, inputParam, this.options)
           .map(this.extractData).catch(this.handleError);
-      }
   }
 
   presentAlert(errorMsg: string) {
