@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { BodyTextChatComponent } from './../components/body-text-chat/body-text-chat';
 import { TextChatComponent } from './../components/text-chat/text-chat';
 import { IonicStorageModule } from '@ionic/storage';
+import { Camera } from '@ionic-native/camera'
 
 
 import { MyApp } from './app.component';
@@ -76,6 +77,7 @@ import { CameraProvider } from '../providers/camera/camera';
     SaveDataProvider,
     CameraProvider,
     BodyTextChatComponent,
+    Camera
     
     
 
