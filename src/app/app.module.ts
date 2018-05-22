@@ -30,6 +30,7 @@ import { CameraProvider } from '../providers/camera/camera';
 
 
 
+
 @NgModule({
   declarations: [
     MyApp,
