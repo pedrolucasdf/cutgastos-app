@@ -58,7 +58,7 @@ export class ContextChatProvider {
         this.popularChat(true, res.output.text[0], "chatBot");
         this.context = res.context;
         console.log("resposta bot: ", res);
-
+      
   
       },
         err => {

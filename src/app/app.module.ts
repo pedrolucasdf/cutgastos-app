@@ -11,6 +11,7 @@ import { BodyTextChatComponent } from './../components/body-text-chat/body-text-
 import { TextChatComponent } from './../components/text-chat/text-chat';
 import { IonicStorageModule } from '@ionic/storage';
 import { Camera } from '@ionic-native/camera'
+import { Keyboard } from '@ionic-native/keyboard';
 
 
 import { MyApp } from './app.component';
@@ -51,8 +52,15 @@ import { CameraProvider } from '../providers/camera/camera';
     HttpClientModule,
     HttpModule,
     IonicStorageModule.forRoot(),
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      tabsPlacement: 'top',
+      tabsHideOnSubPages: true,
+      scrollAssist: false, 
+      autoFocusAssist: false
+      
+      }),
   ],
+
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
@@ -78,7 +86,8 @@ import { CameraProvider } from '../providers/camera/camera';
     SaveDataProvider,
     CameraProvider,
     BodyTextChatComponent,
-    Camera
+    Camera,
+    Keyboard
     
     
 

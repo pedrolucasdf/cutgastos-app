@@ -15,7 +15,7 @@ export class TabsPage {
   //tab3Root = ContactPage;
   tab4Root = ChatSparkPage;
 
-  constructor( 
-    public navCtrl: NavController
-  ) {}
+  constructor(public navCtrl: NavController) {
+    
+  }
 }

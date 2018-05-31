@@ -7,9 +7,6 @@ text-chat {
       position: sticky;
     }
   
-    .bodyChatRow {
-      background-color: royalblue;
-     }
   
     .inputRow {
       background-color: #fff;
@@ -29,15 +26,6 @@ text-chat {
       margin: 5px 5px;
       background: #efefef !important;
     }
-  
-    .text-input-md {
-      margin: 6px 6px;
-    }
-  
-    .text-input-ios {
-      margin: 6px 6px;
-  
-    }
    
     .send {
       width: 2em;
@@ -48,8 +36,6 @@ text-chat {
       bottom: 5px;
       right: 5px;
     }
-    .button{
-      margin-top: 4em;
-    }
+   
   }
   
