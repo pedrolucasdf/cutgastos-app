@@ -1,6 +1,3 @@
-import { TabsPage } from './../pages/tabs/tabs';
-import { ListaEletrodomesticosPage } from './../pages/lista-eletrodomesticos/lista-eletrodomesticos';
-import { CadastroEletrodomesticoPage } from './../pages/cadastro-eletrodomestico/cadastro-eletrodomestico';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -19,6 +16,10 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { CadastroPage } from './../pages/cadastro/cadastro';
 import { ChatSparkPage } from './../pages/chat-spark/chat-spark';
+import { ConfigPage } from './../pages/config/config';
+import { TabsPage } from './../pages/tabs/tabs';
+import { ListaEletrodomesticosPage } from './../pages/lista-eletrodomesticos/lista-eletrodomesticos';
+import { CadastroEletrodomesticoPage } from './../pages/cadastro-eletrodomestico/cadastro-eletrodomestico';
 
 import { BrMaskerModule } from 'brmasker-ionic-3';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
@@ -38,6 +39,7 @@ import { CameraProvider } from '../providers/camera/camera';
     HomePage,
     LoginPage,
     CadastroPage,
+    ConfigPage,
     CadastroEletrodomesticoPage,
     ListaEletrodomesticosPage,
     ChatSparkPage,
@@ -71,6 +73,7 @@ import { CameraProvider } from '../providers/camera/camera';
     ListaEletrodomesticosPage,
     TabsPage,
     ChatSparkPage,
+    ConfigPage,
     TextChatComponent, BodyTextChatComponent
   ],
   providers: [

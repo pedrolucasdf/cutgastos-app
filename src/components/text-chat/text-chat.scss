@@ -15,26 +15,28 @@ text-chat {
       bottom: 0;
       position: absolute !important;
       padding-right: 1em;
+      margin-bottom: 0.3em
   
     }
   
     .ionTextarea {
-      height: 2em;
+      height: 2.5em;
       width: 90%;
       border-radius: 50px;
       background: white !important;
       margin: 5px 5px;
       background: #efefef !important;
+
     }
    
     .send {
-      width: 2em;
+      width: 2.5em;
       height: 2em;
       padding: 0;
-      margin-bottom: 0.2em;
+      margin-bottom: 0.3em;
       position: absolute !important;
-      bottom: 5px;
-      right: 5px;
+      bottom: 0.8em;
+      right: 0.2em;
     }
    
   }
