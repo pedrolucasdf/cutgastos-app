@@ -19,7 +19,7 @@ export class AuthServiceProvider {
   }
 
   autentication(credentials): Observable<JsonReturn>{
-      return this.http.post<JsonReturn>(API_ENDPOINT+"user/autentication", credentials)
+      return this.http.post<JsonReturn>(API_ENDPOINT+"auth", credentials)
   }
 
 }
