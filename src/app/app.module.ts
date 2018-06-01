@@ -29,6 +29,7 @@ import { AlertController } from 'ionic-angular';
 import { SaveDataProvider } from '../providers/save-data/save-data';
 import { Http, HttpModule } from '@angular/http';
 import { CameraProvider } from '../providers/camera/camera';
+import { EletrodomesticoServiceProvider } from '../providers/eletrodomestico-service/eletrodomestico-service';
 
 
 
@@ -90,7 +91,8 @@ import { CameraProvider } from '../providers/camera/camera';
     CameraProvider,
     BodyTextChatComponent,
     Camera,
-    Keyboard
+    Keyboard,
+    EletrodomesticoServiceProvider
     
     
 
