@@ -7,8 +7,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { BodyTextChatComponent } from './../components/body-text-chat/body-text-chat';
 import { TextChatComponent } from './../components/text-chat/text-chat';
 import { IonicStorageModule } from '@ionic/storage';
-import { Camera } from '@ionic-native/camera'
-import { Keyboard } from '@ionic-native/keyboard';
+//import { Camera } from '@ionic-native/camera'
+//import { Keyboard } from '@ionic-native/keyboard';
 
 
 import { MyApp } from './app.component';
@@ -28,7 +28,7 @@ import { CallChatProvider } from '../providers/call-chat/call-chat';
 import { AlertController } from 'ionic-angular';
 import { SaveDataProvider } from '../providers/save-data/save-data';
 import { Http, HttpModule } from '@angular/http';
-import { CameraProvider } from '../providers/camera/camera';
+//import { CameraProvider } from '../providers/camera/camera';
 import { EletrodomesticoServiceProvider } from '../providers/eletrodomestico-service/eletrodomestico-service';
 
 
@@ -56,11 +56,10 @@ import { EletrodomesticoServiceProvider } from '../providers/eletrodomestico-ser
     HttpModule,
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp, {
-      tabsPlacement: 'top',
+      tabsPlacement: 'bottom',
       tabsHideOnSubPages: true,
       scrollAssist: false, 
-      autoFocusAssist: false
-      
+      autoFocusAssist: false      
       }),
   ],
 
@@ -88,10 +87,10 @@ import { EletrodomesticoServiceProvider } from '../providers/eletrodomestico-ser
     AlertController,
     CallChatProvider,
     SaveDataProvider,
-    CameraProvider,
+    //CameraProvider,
     BodyTextChatComponent,
-    Camera,
-    Keyboard,
+    //Camera,
+    //Keyboard,
     EletrodomesticoServiceProvider
     
     

@@ -1,4 +1,4 @@
-import { Keyboard } from '@ionic-native/keyboard';
+//import { Keyboard } from '@ionic-native/keyboard';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -17,10 +17,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ChatSparkPage {
     
-   constructor(public navCtrl: NavController, public navParams: NavParams, public keyboard: Keyboard) {
+   constructor(public navCtrl: NavController, public navParams: NavParams, /*public keyboard: Keyboard*/) {
 
   }
   ionViewDidEnter(){
-    this.keyboard.disableScroll(true);
+    //this.keyboard.disableScroll(true);
   }
 }

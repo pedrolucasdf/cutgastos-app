@@ -1,4 +1,5 @@
-import { CameraProvider } from './../../providers/camera/camera';
+import { Eletrodomestico } from './../../models/eletrodomestico';
+//import { CameraProvider } from './../../providers/camera/camera';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -16,15 +17,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CadastroEletrodomesticoPage {
 
-  eletrodomestico: any;
+  eletrodomestico: Eletrodomestico;
   titulo : string;
   btnTexto : string;
   cadastroEletrodomesticoForm : FormGroup;
 
   constructor(
     public navCtrl: NavController, public navParams: NavParams, 
-    public formBuilder: FormBuilder, public CameraProvider: CameraProvider
-  ) { }
+    public formBuilder: FormBuilder//, public CameraProvider: CameraProvider
+  ) { let e = Object.assign(new Eletrodomestico, this.eletrodomestico)}
 
   ionViewDidLoad() {
     if(this.navParams.data == 0)
@@ -44,7 +45,7 @@ export class CadastroEletrodomesticoPage {
       this.cadastroEletrodomesticoForm = this.formBuilder.group({
         nome: this.formBuilder.control(this.eletrodomestico.nome, [Validators.required]),
         descricao: this.formBuilder.control(this.eletrodomestico.descricao, [Validators.required]),
-        potencia: this.formBuilder.control(this.eletrodomestico.potencia, [Validators.required])
+        potencia: this.formBuilder.control(this.eletrodomestico.potencia_uso, [Validators.required])
       })     
     }
   }
@@ -53,7 +54,6 @@ export class CadastroEletrodomesticoPage {
     
   }
   onClickTirarFoto(){
-    this.CameraProvider.TirarFoto();
-
+    //this.CameraProvider.TirarFoto();
   }
 }

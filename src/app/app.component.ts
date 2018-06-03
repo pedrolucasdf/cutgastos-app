@@ -1,4 +1,4 @@
-import { Keyboard } from '@ionic-native/keyboard';
+//import { Keyboard } from '@ionic-native/keyboard';
 import { LoginPage } from './../pages/login/login';
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
