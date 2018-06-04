@@ -35,7 +35,10 @@ export class CadastroEletrodomesticoPage {
       this.cadastroEletrodomesticoForm = this.formBuilder.group({
         nome: this.formBuilder.control("", [Validators.required]),
         descricao: this.formBuilder.control("", [Validators.required]),
-        potencia: this.formBuilder.control("", [Validators.required])
+        potenciaemuso: this.formBuilder.control("", [Validators.required]),
+        potenciaemstandby: this.formBuilder.control("", [Validators.required]),
+        dias: this.formBuilder.control("", [Validators.required]),
+        horas: this.formBuilder.control("", [Validators.required])
       })
     }
     else{
@@ -43,9 +46,12 @@ export class CadastroEletrodomesticoPage {
       this.btnTexto = "Salvar";
       this.eletrodomestico = this.navParams.data;
       this.cadastroEletrodomesticoForm = this.formBuilder.group({
-        nome: this.formBuilder.control(this.eletrodomestico.nome, [Validators.required]),
-        descricao: this.formBuilder.control(this.eletrodomestico.descricao, [Validators.required]),
-        potencia: this.formBuilder.control(this.eletrodomestico.potencia_uso, [Validators.required])
+        nome: this.formBuilder.control("", [Validators.required]),
+        descricao: this.formBuilder.control("", [Validators.required]),
+        potenciaemuso: this.formBuilder.control("", [Validators.required]),
+        potenciaemstandby: this.formBuilder.control("", [Validators.required]),
+        dias: this.formBuilder.control("", [Validators.required]),
+        horas: this.formBuilder.control("", [Validators.required])
       })     
     }
   }

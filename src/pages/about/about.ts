@@ -1,10 +1,8 @@
-import { AboutPage } from './../about/about';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 /**
- * Generated class for the ConfigPage page.
+ * Generated class for the AboutPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,19 +10,16 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @IonicPage()
 @Component({
-  selector: 'page-config',
-  templateUrl: 'config.html',
+  selector: 'page-about',
+  templateUrl: 'about.html',
 })
-export class ConfigPage {
+export class AboutPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ConfigPage');
+    console.log('ionViewDidLoad AboutPage');
   }
-  
-    onClickAbout(){
-      this.navCtrl.push(AboutPage);  
-  }
+
 }

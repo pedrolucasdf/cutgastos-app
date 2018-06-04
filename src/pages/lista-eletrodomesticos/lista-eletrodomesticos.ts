@@ -22,15 +22,18 @@ export class ListaEletrodomesticosPage {
     this.listaEletrodomesticos = [
       {
         "nome":"Geladeira",
-        "potencia":"45kW/h",
+        "potenciaEmUso":"45kW/h",
+        "potenciaStandBy": "5kW/h",
       },
       {
         "nome":"TV",
-        "potencia":"100kW/h",
+        "potenciaEmUso":"100kW/h",
+        "potenciaStandBy": "5kW/h",
       },
       {
         "nome":"Microondas",
-        "potencia":"32kW/h",
+        "potenciaEmUso":"32kW/h",
+        "potenciaStandBy": "5kW/h",
       }
     ]
   }

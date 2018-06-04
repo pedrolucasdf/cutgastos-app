@@ -17,19 +17,40 @@
         <ion-row>
           <ion-col>
             <ion-list inset>
+              
               <ion-item>
-                <ion-input formControlName="nome" type="text" placeholder="Nome do Eletrodomestico"></ion-input>
+              <ion-input formControlName="nome" type="text" placeholder="Nome do Eletrodoméstico"></ion-input>
               </ion-item>
+             
               <ion-item>
+                  <ion-input formControlName="quantidade" type="text" placeholder="Quantidade"></ion-input>
+                </ion-item>
+             
+                <ion-item>
                 <ion-input formControlName="descricao" type="text" placeholder="Descrição"></ion-input>
               </ion-item>
+
               <ion-item>
-                <ion-input formControlName="potencia" type="text" placeholder="Potência (kW/h)"></ion-input>
-              </ion-item>
+                  <ion-input formControlName="potenciaemuso" type="text" placeholder="Potência em uso (kW/h)"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-input formControlName="potenciaemstandby" type="text" placeholder="Potência em Stand By (kW/h)"></ion-input>
+                  </ion-item>
+
+                  <ion-item>
+                      <ion-input formControlName="dias" type="text" placeholder="Dias de uso"></ion-input>
+                    </ion-item>
               <ion-item>
-                <button ion-button class="foto-btn" (click)="onClickTirarFoto()"> Tirar Foto </button>
-              </ion-item>
-                <button ion-button class="submit-btn" (click)="onClickAdicionar()"full type="submit" >{{btnTexto}}</button>
+                  <ion-input formControlName="horas" type="text" placeholder="Horas de uso"></ion-input>
+                </ion-item>  
+                 
+              <ion-item>
+                  <button ion-button class="foto-btn" (click)="onClickTirarFoto()"> Tirar Foto </button>
+                </ion-item>
+          
+              <button ion-button class="submit-btn" (click)="onClickAdicionar()"full type="submit" >{{btnTexto}}</button>
+          
               </ion-list>
           </ion-col>
         </ion-row>
@@ -38,3 +59,12 @@
   </div>
 
 </ion-content>
+
+
+
+
+   
+    
+  
+      
+    

@@ -18,8 +18,11 @@
           <div class="dados-eletrodomestico">{{eletrodomestico.nome}}</div>
         </ion-col>
         <ion-col center text-center>
-          <div class="dados-eletrodomestico">{{eletrodomestico.potencia}}</div>
+          <div class="dados-eletrodomestico">{{eletrodomestico.potenciaEmUso}}</div>
         </ion-col>
+        <ion-col center text-center>
+            <div class="dados-eletrodomestico">{{eletrodomestico.potenciaStandBy}}</div>
+          </ion-col>
         <ion-col center text-center>
           <button ion-button item-end clear (click)="onClickEdit(eletrodomestico)">
             <ion-icon name="ios-create-outline"></ion-icon>

@@ -20,6 +20,8 @@ import { ConfigPage } from './../pages/config/config';
 import { TabsPage } from './../pages/tabs/tabs';
 import { ListaEletrodomesticosPage } from './../pages/lista-eletrodomesticos/lista-eletrodomesticos';
 import { CadastroEletrodomesticoPage } from './../pages/cadastro-eletrodomestico/cadastro-eletrodomestico';
+import { AboutPage } from './../pages/about/about';
+
 
 import { BrMaskerModule } from 'brmasker-ionic-3';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
@@ -44,6 +46,7 @@ import { EletrodomesticoServiceProvider } from '../providers/eletrodomestico-ser
     CadastroEletrodomesticoPage,
     ListaEletrodomesticosPage,
     ChatSparkPage,
+    AboutPage,
     BodyTextChatComponent,
     TextChatComponent
 ,
@@ -74,6 +77,7 @@ import { EletrodomesticoServiceProvider } from '../providers/eletrodomestico-ser
     TabsPage,
     ChatSparkPage,
     ConfigPage,
+    AboutPage,
     TextChatComponent, BodyTextChatComponent
   ],
   providers: [
