@@ -12,28 +12,28 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-card class="card" *ngFor="let eletrodomestico of listaEletrodomesticos">
+    <ion-card class="card" *ngFor="let eletrodomestico of listaEletrodomesticos" >
       <ion-row>
-        <ion-col center text-center col-3>
-          <div class="dados-eletrodomestico">
+        <ion-col center text-center>
+          <div class="dados-eletrodomestico col-3">
             <ion-label class="labelElem" color="primary" stacked>Nome</ion-label>
             {{eletrodomestico.nome}}</div>
         </ion-col>
 
-        <ion-col center text-centercol-3>
-          <div class="dados-eletrodomestico">
+        <ion-col center text-center>
+          <div class="dados-eletrodomestico col-3">
             <ion-label class="labelElem"  color="primary" stacked>Potencia uso</ion-label>
             {{eletrodomestico.potenciaEmUso}}</div>
         </ion-col>
 
-        <ion-col center text-center col-3>
-            <ion-label class="labelElem"  color="primary" stacked>Potencia StandBy</ion-label>
-            <div class="dados-eletrodomestico">{{eletrodomestico.potenciaStandBy}}</div>
-          </ion-col>
+        <!--<ion-col center text-center>
+            <ion-label class="labelElem "  color="primary" stacked>Potencia StandBy</ion-label>
+            <div class="dados-eletrodomestico col-3">{{eletrodomestico.potenciaStandBy}}</div>
+          </ion-col> -->
 
-        <ion-col center text-center col-3>
+        <ion-col center text-center>
           <button ion-button item-end clear (click)="onClickEdit(eletrodomestico)">
-            <ion-icon class="adicionarBtn"name="ios-create-outline"></ion-icon>
+            <ion-icon class="adicionarBtn col-3"name="ios-create-outline"></ion-icon>
           </button>
         </ion-col>
 
