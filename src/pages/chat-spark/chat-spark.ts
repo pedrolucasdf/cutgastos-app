@@ -21,6 +21,7 @@ export class ChatSparkPage {
 
   }
   ionViewDidEnter(){
+    
     //this.keyboard.disableScroll(true);
   }
 }

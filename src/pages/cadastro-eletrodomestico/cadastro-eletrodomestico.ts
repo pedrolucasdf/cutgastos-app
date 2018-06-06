@@ -35,6 +35,7 @@ export class CadastroEletrodomesticoPage {
       this.cadastroEletrodomesticoForm = this.formBuilder.group({
         nome: this.formBuilder.control("", [Validators.required]),
         descricao: this.formBuilder.control("", [Validators.required]),
+        quantidade: this.formBuilder.control("", [Validators.required]),
         potenciaemuso: this.formBuilder.control("", [Validators.required]),
         potenciaemstandby: this.formBuilder.control("", [Validators.required]),
         dias: this.formBuilder.control("", [Validators.required]),
@@ -48,6 +49,7 @@ export class CadastroEletrodomesticoPage {
       this.cadastroEletrodomesticoForm = this.formBuilder.group({
         nome: this.formBuilder.control("", [Validators.required]),
         descricao: this.formBuilder.control("", [Validators.required]),
+        quantidade: this.formBuilder.control("", [Validators.required]),
         potenciaemuso: this.formBuilder.control("", [Validators.required]),
         potenciaemstandby: this.formBuilder.control("", [Validators.required]),
         dias: this.formBuilder.control("", [Validators.required]),

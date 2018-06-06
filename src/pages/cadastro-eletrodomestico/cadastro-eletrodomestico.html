@@ -19,35 +19,45 @@
             <ion-list inset>
               
               <ion-item>
+              <ion-label color="primary" stacked>Nome</ion-label>
               <ion-input formControlName="nome" type="text" placeholder="Nome do Eletrodoméstico"></ion-input>
               </ion-item>
              
               <ion-item>
+                  <ion-label color="primary" stacked>Quantidade</ion-label>
                   <ion-input formControlName="quantidade" type="text" placeholder="Quantidade"></ion-input>
                 </ion-item>
              
                 <ion-item>
+                  <ion-label color="primary" stacked>Descrição</ion-label>
                 <ion-input formControlName="descricao" type="text" placeholder="Descrição"></ion-input>
               </ion-item>
 
               <ion-item>
+                  <ion-label color="primary" stacked>Potência em uso (kW/h)</ion-label>
                   <ion-input formControlName="potenciaemuso" type="text" placeholder="Potência em uso (kW/h)"></ion-input>
                 </ion-item>
 
                 <ion-item>
+                    <ion-label color="primary" stacked>Potência em Stand By (kW/h)</ion-label>
                     <ion-input formControlName="potenciaemstandby" type="text" placeholder="Potência em Stand By (kW/h)"></ion-input>
                   </ion-item>
 
                   <ion-item>
+                      <ion-label color="primary" stacked>Dias de Uso</ion-label>
                       <ion-input formControlName="dias" type="text" placeholder="Dias de uso"></ion-input>
                     </ion-item>
+
               <ion-item>
+                  <ion-label color="primary" stacked>Horas de Uso</ion-label>
                   <ion-input formControlName="horas" type="text" placeholder="Horas de uso"></ion-input>
                 </ion-item>  
                  
-              <ion-item>
-                  <button ion-button class="foto-btn" (click)="onClickTirarFoto()"> Tirar Foto </button>
-                </ion-item>
+             
+                  <button ion-button icon-only  class="foto-btn" (click)="onClickTirarFoto()"> 
+                      <ion-icon ios="ios-camera" md="md-camera"></ion-icon>  
+                  </button>
+             
           
               <button ion-button class="submit-btn" (click)="onClickAdicionar()"full type="submit" >{{btnTexto}}</button>
           
