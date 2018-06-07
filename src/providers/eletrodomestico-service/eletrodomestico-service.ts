@@ -15,36 +15,37 @@ import { Usuario } from '../../models/usuario';
 @Injectable()
 export class EletrodomesticoServiceProvider {
 
+
   constructor(public http: HttpClient) {
     console.log('Hello EletrodomesticoServiceProvider Provider');
   }
 
   getEletrodomesticos(): Observable<JsonReturn>{
-    return this.http.get<JsonReturn>(API_ENDPOINT+"eletrodomesticos");
+    return this.http.get<JsonReturn>(API_ENDPOINT+"eletrodomestico");
   }
 
   getEletrodomesticoByID(eletrodomestico: Eletrodomestico): Observable<JsonReturn>{
-    return this.http.get<JsonReturn>(API_ENDPOINT+"eletrodomesticos?id="+eletrodomestico.id);
+    return this.http.get<JsonReturn>(API_ENDPOINT+"eletrodomestico?id="+eletrodomestico.id);
   }
 
   getEletrodomesticoByUsuario(usuario: Usuario): Observable<JsonReturn>{
-    return this.http.get<JsonReturn>(API_ENDPOINT+"eletrodomesticos?usuario_id="+usuario.id);
+    return this.http.get<JsonReturn>(API_ENDPOINT+"eletrodomestico?usuario_id="+usuario.id);
   }
 
   getEletrodomesticoByPotencia(usuario: Usuario, eletrodomestico: Eletrodomestico): Observable<JsonReturn>{
-    return this.http.get<JsonReturn>(API_ENDPOINT+"eletrodomesticos?usuario_id="+usuario.id+"&potencia_uso="+eletrodomestico.potencia_uso);
+    return this.http.get<JsonReturn>(API_ENDPOINT+"eletrodomestico?usuario_id="+usuario.id+"&potencia_uso="+eletrodomestico.potencia_uso);
   }
 
   createEletrodomestico(eletrodomestico: Eletrodomestico): Observable<JsonReturn>{
-    return this.http.post<JsonReturn>(API_ENDPOINT+"eletrodomesticos", eletrodomestico);
+    return this.http.post<JsonReturn>(API_ENDPOINT+"eletrodomestico", eletrodomestico);
   }
 
   updateEletrodomestico(eletrodomestico: Eletrodomestico): Observable<JsonReturn>{
-    return this.http.put<JsonReturn>(API_ENDPOINT+"eletrodomesticos?id="+eletrodomestico.id, eletrodomestico);
+    return this.http.put<JsonReturn>(API_ENDPOINT+"eletrodomestico?id="+eletrodomestico.id, eletrodomestico);
   }
 
   deleteEletrodomestico(eletrodomestico: Eletrodomestico): Observable<JsonReturn>{
-    return this.http.delete<JsonReturn>(API_ENDPOINT+"eletrodomesticos?id="+eletrodomestico.id);
+    return this.http.delete<JsonReturn>(API_ENDPOINT+"eletrodomestico?id="+eletrodomestico.id);
   }
 
   
