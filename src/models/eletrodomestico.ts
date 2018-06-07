@@ -9,6 +9,6 @@ export class Eletrodomestico {
     data_cadastro: Date;
     quantidade: number;
     horas: Time;
-    minutos: Time;
+    dias: number;
     usuario_id: number;
 }
