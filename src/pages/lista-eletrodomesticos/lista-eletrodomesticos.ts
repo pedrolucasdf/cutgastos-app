@@ -1,3 +1,5 @@
+import { JsonReturn } from './../../models/jsonReturn';
+import { EletrodomesticoServiceProvider } from './../../providers/eletrodomestico-service/eletrodomestico-service';
 import { CadastroEletrodomesticoPage } from './../cadastro-eletrodomestico/cadastro-eletrodomestico';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -18,24 +20,11 @@ export class ListaEletrodomesticosPage {
 
   listaEletrodomesticos: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.listaEletrodomesticos = [
-      {
-        "nome":"Geladeira",
-        "potenciaEmUso":"45kW/h",
-        "potenciaStandBy": "5kW/h",
-      },
-      {
-        "nome":"TV",
-        "potenciaEmUso":"100kW/h",
-        "potenciaStandBy": "5kW/h",
-      },
-      {
-        "nome":"Microondas",
-        "potenciaEmUso":"32kW/h",
-        "potenciaStandBy": "5kW/h",
-      }
-    ]
+  constructor(public navCtrl: NavController, public navParams: NavParams, eletrodomesticoService: EletrodomesticoServiceProvider) {
+    eletrodomesticoService.getEletrodomesticos().subscribe((object : JsonReturn)=>{
+      this.listaEletrodomesticos = object.data;
+    });
+     
   }
 
   ionViewDidLoad() {
