@@ -1,3 +1,4 @@
+import { EletrodomesticoServiceProvider } from './../../providers/eletrodomestico-service/eletrodomestico-service';
 import { Eletrodomestico } from './../../models/eletrodomestico';
 //import { CameraProvider } from './../../providers/camera/camera';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -24,8 +25,10 @@ export class CadastroEletrodomesticoPage {
 
   constructor(
     public navCtrl: NavController, public navParams: NavParams, 
-    public formBuilder: FormBuilder//, public CameraProvider: CameraProvider
-  ) { let e = Object.assign(new Eletrodomestico, this.eletrodomestico)}
+    public formBuilder: FormBuilder,
+    //public CameraProvider: CameraProvider,
+    public eletrodomesticoService: EletrodomesticoServiceProvider
+  ) {}
 
   ionViewDidLoad() {
     if(this.navParams.data == 0)
@@ -59,7 +62,10 @@ export class CadastroEletrodomesticoPage {
   }
 
   onClickAdicionar(){
-    
+    let e = Object.assign(new Eletrodomestico, this.cadastroEletrodomesticoForm.value);
+    this.eletrodomesticoService.getEletrodomesticos().subscribe((object)=>{
+      console.log(object);
+    });
   }
   onClickTirarFoto(){
     //this.CameraProvider.TirarFoto();
