@@ -35,10 +35,11 @@ $app-direction: ltr;
 
 $colors: (
   primary:    #51CFB1,
-  secondary:  #32db64,
+  secondary:  #E59400,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+
 );
 
 
@@ -60,6 +61,8 @@ $tabs-md-tab-text-color-active: #E59400;
 $tabs-md-tab-icon-color-active: #E59400;
 
 $label-md-text-color-focused: #E59400;
+$label-md-text-color: #E59400;
+
 
 $button-md-background-color-activated: #E59400;
 // App Windows Variables
