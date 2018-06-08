@@ -33,7 +33,7 @@ export class EletrodomesticoServiceProvider {
   }
 
   getEletrodomesticoByPotencia(usuario: Usuario, eletrodomestico: Eletrodomestico): Observable<JsonReturn>{
-    return this.http.get<JsonReturn>(API_ENDPOINT+"eletrodomestico?usuario_id="+usuario.id+"&potencia_uso="+eletrodomestico.potencia_uso);
+    return this.http.get<JsonReturn>(API_ENDPOINT+"eletrodomestico?usuario_id="+usuario.id+"&potencia_uso="+eletrodomestico.potenciaUso);
   }
 
   createEletrodomestico(eletrodomestico: Eletrodomestico): Observable<JsonReturn>{
