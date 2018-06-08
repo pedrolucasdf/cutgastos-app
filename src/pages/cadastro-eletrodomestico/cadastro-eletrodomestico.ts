@@ -39,8 +39,8 @@ export class CadastroEletrodomesticoPage {
         nome: this.formBuilder.control("", [Validators.required]),
         descricao: this.formBuilder.control("", [Validators.required]),
         quantidade: this.formBuilder.control("", [Validators.required]),
-        potencia_uso: this.formBuilder.control("", [Validators.required]),
-        potencia_standby: this.formBuilder.control("", [Validators.required]),
+        potenciaUso: this.formBuilder.control("", [Validators.required]),
+        potenciaStandby: this.formBuilder.control("", [Validators.required]),
         dias: this.formBuilder.control("", [Validators.required]),
         horas: this.formBuilder.control("", [Validators.required])
       })
@@ -53,8 +53,8 @@ export class CadastroEletrodomesticoPage {
         nome: this.formBuilder.control(this.eletrodomestico.nome, [Validators.required]),
         descricao: this.formBuilder.control(this.eletrodomestico.descricao, [Validators.required]),
         quantidade: this.formBuilder.control(this.eletrodomestico.quantidade, [Validators.required]),
-        potencia_uso: this.formBuilder.control(this.eletrodomestico.potencia_uso, [Validators.required]),
-        potencia_standby: this.formBuilder.control(this.eletrodomestico.potencia_standby, [Validators.required]),
+        potenciaUso: this.formBuilder.control(this.eletrodomestico.potenciaUso, [Validators.required]),
+        potenciaStandby: this.formBuilder.control(this.eletrodomestico.potenciaStandby, [Validators.required]),
         dias: this.formBuilder.control(this.eletrodomestico.dias, [Validators.required]),
         horas: this.formBuilder.control(this.eletrodomestico.horas, [Validators.required])
       })     
