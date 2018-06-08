@@ -1,3 +1,4 @@
+import { JsonReturn } from './../../models/jsonReturn';
 import { EletrodomesticoServiceProvider } from './../../providers/eletrodomestico-service/eletrodomestico-service';
 import { Eletrodomestico } from './../../models/eletrodomestico';
 //import { CameraProvider } from './../../providers/camera/camera';
@@ -63,8 +64,13 @@ export class CadastroEletrodomesticoPage {
 
   onClickAdicionar(){
     let e = Object.assign(new Eletrodomestico, this.cadastroEletrodomesticoForm.value);
-    this.eletrodomesticoService.getEletrodomesticos().subscribe((object)=>{
-      console.log(object);
+    this.eletrodomesticoService.createEletrodomestico(e).subscribe((object: JsonReturn)=>{
+      if(object.message == 'SUCESSO'){
+        //Eletrodomestico cadastrado com sucesso
+      }
+      else{
+        //Tratamento de erro
+      }
     });
   }
   onClickTirarFoto(){
