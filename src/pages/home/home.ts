@@ -89,63 +89,6 @@ export class HomePage {
 
       });
 
-      this.pieChart = new Chart(this.pieCanvas.nativeElement, {
-
-        type: 'pie',
-        data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-            datasets: [{
-             // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                data: [1, 2, 3, 4, 5, 6],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                hoverBackgroundColor: [
-                    "#FF6384",
-                    "#36A2EB",
-                    "#FFCE56",
-                    "#FF6384",
-                    "#36A2EB",
-                    "#FFCE56"
-                ]
-            }]
-        }
-
-    });
-
-      this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
-
-          type: 'doughnut',
-          data: {
-              labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-              datasets: [{
-               // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                  data: [1, 2, 3, 4, 5, 6],
-                  backgroundColor: [
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(54, 162, 235, 0.2)',
-                      'rgba(255, 206, 86, 0.2)',
-                      'rgba(75, 192, 192, 0.2)',
-                      'rgba(153, 102, 255, 0.2)',
-                      'rgba(255, 159, 64, 0.2)'
-                  ],
-                  hoverBackgroundColor: [
-                      "#FF6384",
-                      "#36A2EB",
-                      "#FFCE56",
-                      "#FF6384",
-                      "#36A2EB",
-                      "#FFCE56"
-                  ]
-              }]
-          }
-
-      });
 
       this.lineChart = new Chart(this.lineCanvas.nativeElement, {
 
