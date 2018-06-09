@@ -1,3 +1,5 @@
+import { LoginPage } from './../login/login';
+import { CadastroPage } from './../cadastro/cadastro';
 import { AboutPage } from './../about/about';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -24,7 +26,17 @@ export class ConfigPage {
     console.log('ionViewDidLoad ConfigPage');
   }
   
-    onClickAbout(){
+  onClickAbout(){
       this.navCtrl.push(AboutPage);  
+  }
+
+  onClickEdit(){
+    this.navCtrl.push(CadastroPage);  
+
+  }
+
+  onClickLogout(){
+    this.navCtrl.push(LoginPage);  
+
   }
 }

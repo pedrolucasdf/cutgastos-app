@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>config</ion-title>
+    <ion-title>configurações</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,18 +15,18 @@
 
 <ion-content padding>
 
-    <button clear large ion-button full ion-button icon-left>
-        <ion-icon name="contact"></ion-icon>
+    <button clear large ion-button full ion-button icon-left (click)="onClickEdit()">
+        <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
         Editar Perfil
       </button>
 
-    <button clear large ion-button full ion-button icon-left>
-       <ion-icon name="logo-playstation"></ion-icon>
-        Alguma coisa
+    <button clear large ion-button full ion-button icon-left (click)="onClickLogout()">
+        <ion-icon ios="ios-log-out" md="md-log-out"></ion-icon>  
+         Log out
       </button> 
 
     <button clear large ion-button full ion-button icon-left (click)="onClickAbout()">
-        <ion-icon name="paper"></ion-icon>
+        <ion-icon ios="ios-paper" md="md-paper"></ion-icon>
         Sobre 
       </button>
 
