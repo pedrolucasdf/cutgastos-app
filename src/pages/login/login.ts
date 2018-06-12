@@ -1,9 +1,10 @@
+import { Credenciais } from './../../models/login';
 import { TabsPage } from './../tabs/tabs';
 import { CadastroPage } from './../cadastro/cadastro';
 import { JsonReturn } from './../../models/jsonReturn';
 import { AuthServiceProvider } from './../../providers/auth-service/auth-service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validator, Validators} from "@angular/forms";
 
 /**
@@ -26,7 +27,8 @@ export class LoginPage {
     public navCtrl: NavController,
     public navParams: NavParams, 
     public formBuilder: FormBuilder,
-    public authServiceProvider: AuthServiceProvider
+    public authServiceProvider: AuthServiceProvider,
+    private alertCtrl: AlertController
   ) {}
 
   ionViewDidLoad() {
@@ -38,18 +40,32 @@ export class LoginPage {
   }
 
   onClickEntrar(){
-    /*//Chama o provider que autentica o usuário
-    this.authServiceProvider.autentication(this.loginForm.value)
-    .subscribe((response: JsonReturn) => {
+    //Chama o provider que autentica o usuário
+    let c = Object.assign(new Credenciais, this.loginForm.value);
+    this.alertCtrl.create({
+      title: 'Aceite seu destino!!',
+      subTitle: c,
+      buttons: ['OKAY']
+    }).present();
+
+    
+
+    this.authServiceProvider.autentication(this.loginForm.value).subscribe((response: JsonReturn) => {
       if(response.status === "SUCESSO"){
         //Login correto
+        this.navCtrl.setRoot(TabsPage);
+        this.navCtrl.push(TabsPage);
       }
       else{
         //Tratamento de erro
+        let alert = this.alertCtrl.create({
+          title: 'Aceite seu destino!!',
+          subTitle: 'Credenciais incorretas ou não cadastradas!!!',
+          buttons: ['OKAY']
+        });
+        alert.present();
       }
-    });*/
-    this.navCtrl.setRoot(TabsPage);
-    this.navCtrl.push(TabsPage);
+    });
   }
 
   onClickNovaConta(){

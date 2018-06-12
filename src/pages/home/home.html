@@ -18,9 +18,7 @@
         <ion-card-header>
           Consumo diário
         </ion-card-header>
-        <ion-item>
-            <ion-label>Data</ion-label>
-            <ion-datetime displayFormat="MMMM/YYYY" [(ngModel)]="myDate" placeholder="01/2000"></ion-datetime>      
+        <ion-item>   
         </ion-item>
         <ion-card-content>
           <canvas #lineCanvas></canvas>
@@ -31,9 +29,7 @@
       <ion-card-header>
         Consumo Mensal
       </ion-card-header>
-      <ion-item>
-          <ion-label>Ano</ion-label>
-          <ion-datetime displayFormat="YYYY" [(ngModel)]="myDate" placeholder="2000"></ion-datetime>      
+      <ion-item>    
       </ion-item>
       <ion-card-content>
         <canvas #barCanvas></canvas>
@@ -44,9 +40,7 @@
       <ion-card-header>
         Maiores consumidores anual
       </ion-card-header>
-      <ion-item>
-          <ion-label>Ano</ion-label>
-          <ion-datetime displayFormat="YYYY" [(ngModel)]="myDate" placeholder="2000"></ion-datetime>      
+      <ion-item>     
       </ion-item>
       <ion-card-content>
         <canvas #pieCanvas></canvas>

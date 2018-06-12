@@ -155,9 +155,6 @@ export class HomePage {
                 fontSize:6
             }
         }
-    
-
       });
-    
   }
 }
