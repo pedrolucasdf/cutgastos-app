@@ -5,6 +5,8 @@ import { Eletrodomestico } from './../../models/eletrodomestico';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { SessionProvider } from '../../providers/session/session';
+import { Usuario } from '../../models/usuario';
 /**
  * Generated class for the CadastroEletrodomesticoPage page.
  *
@@ -23,13 +25,25 @@ export class CadastroEletrodomesticoPage {
   titulo : string;
   btnTexto : string;
   cadastroEletrodomesticoForm : FormGroup;
+  usuarioLogado: Usuario;
 
   constructor(
     public navCtrl: NavController, public navParams: NavParams, 
     public formBuilder: FormBuilder,
     //public CameraProvider: CameraProvider,
-    public eletrodomesticoService: EletrodomesticoServiceProvider
+    public eletrodomesticoService: EletrodomesticoServiceProvider,
+    public session: SessionProvider
   ) {}
+
+  ngOnInit() {
+    this.session.get()
+      .then(res => {
+        this.usuarioLogado = Object.assign(new Usuario, res);
+        console.log('usuário logado  >>> ',this.usuarioLogado);
+      });
+  
+      console.log(this.session.exist());
+  }
 
   ionViewDidLoad() {
     if(this.navParams.data == 0)
@@ -64,6 +78,9 @@ export class CadastroEletrodomesticoPage {
 
   onClickAdicionar(){
     let e = Object.assign(new Eletrodomestico, this.cadastroEletrodomesticoForm.value);
+    //Adaptação técnica momentânea
+    e.usuario = this.usuarioLogado;
+    console.log(e);
     this.eletrodomesticoService.createEletrodomestico(e).subscribe((object: JsonReturn)=>{
       if(object.message == 'SUCESSO'){
         //Eletrodomestico cadastrado com sucesso
