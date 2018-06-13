@@ -6,6 +6,8 @@ import { AuthServiceProvider } from './../../providers/auth-service/auth-service
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validator, Validators} from "@angular/forms";
+import { SessionProvider } from '../../providers/session/session';
+import { Usuario } from '../../models/usuario';
 
 /**
  * Generated class for the LoginPage page.
@@ -22,13 +24,16 @@ import { FormBuilder, FormGroup, Validator, Validators} from "@angular/forms";
 export class LoginPage {
 
   loginForm: FormGroup;
+  public propEmail: string;
+  public propSenha: string;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams, 
     public formBuilder: FormBuilder,
     public authServiceProvider: AuthServiceProvider,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    public session: SessionProvider
   ) {}
 
   ionViewDidLoad() {
@@ -42,17 +47,28 @@ export class LoginPage {
   onClickEntrar(){
     //Chama o provider que autentica o usuário
     let c = Object.assign(new Credenciais, this.loginForm.value);
-    this.alertCtrl.create({
-      title: 'Aceite seu destino!!',
-      subTitle: c,
-      buttons: ['OKAY']
-    }).present();
-
+    //let c = JSON.stringify(this.loginForm.value);
+    console.log(c);
     
+    /* //Para realização de testes do funcionamento provider de sessão:
+    let u = Object.assign(new Usuario,{
+      "id":"4",
+      "nome": "teste",
+      "cpf": "111111111",
+      "email":"teste@gmail.com",
+      "senha":123
+    });
 
-    this.authServiceProvider.autentication(this.loginForm.value).subscribe((response: JsonReturn) => {
+    this.session.create(u);
+    this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.push(TabsPage);
+    */
+
+    this.authServiceProvider.autentication(c).subscribe((response: JsonReturn) => {
       if(response.status === "SUCESSO"){
         //Login correto
+        let usuario = Object.assign(new Usuario, response.data);
+        this.session.create(usuario);
         this.navCtrl.setRoot(TabsPage);
         this.navCtrl.push(TabsPage);
       }
