@@ -32,6 +32,7 @@ import { SaveDataProvider } from '../providers/save-data/save-data';
 import { Http, HttpModule } from '@angular/http';
 //import { CameraProvider } from '../providers/camera/camera';
 import { EletrodomesticoServiceProvider } from '../providers/eletrodomestico-service/eletrodomestico-service';
+import { SessionProvider } from '../providers/session/session';
 
 
 
@@ -95,7 +96,8 @@ import { EletrodomesticoServiceProvider } from '../providers/eletrodomestico-ser
     BodyTextChatComponent,
     //Camera,
     //Keyboard,
-    EletrodomesticoServiceProvider
+    EletrodomesticoServiceProvider,
+    SessionProvider
     
     
 
