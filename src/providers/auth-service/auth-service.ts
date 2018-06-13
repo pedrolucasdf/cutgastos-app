@@ -3,6 +3,7 @@ import { API_ENDPOINT } from './../../utils/constants';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Credenciais } from '../../models/login';
 
 
 /*
@@ -18,7 +19,7 @@ export class AuthServiceProvider {
     console.log('Hello AuthServiceProvider Provider');
   }
 
-  autentication(credentials): Observable<JsonReturn>{
+  autentication(credentials: Credenciais): Observable<JsonReturn>{
       return this.http.post<JsonReturn>(API_ENDPOINT+"auth", credentials)
   }
 
