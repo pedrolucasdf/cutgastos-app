@@ -46,8 +46,12 @@ export class CadastroEletrodomesticoPage {
       console.log(this.session.exist());
   }
 
+  ionViewWillLeave(){
+    this.navParams.get("parentPage").refresh();
+  }
+
   ionViewDidLoad() {
-    if(this.navParams.data == 0)
+    if(!this.navParams.get("isEdit"))
     {
       this.titulo = "Cadastrar Eletrodoméstico";
       this.btnTexto = "Cadastrar";
@@ -66,7 +70,7 @@ export class CadastroEletrodomesticoPage {
       this.titulo = "Edição";
       this.btnTexto = "Salvar";
       this.isEdit = true;
-      this.eletrodomestico = this.navParams.data;
+      this.eletrodomestico = this.navParams.get("eletrodomestico");
       this.cadastroEletrodomesticoForm = this.formBuilder.group({
         id : this.eletrodomestico.id,
         usuario : this.usuarioLogado,
