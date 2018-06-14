@@ -1,9 +1,11 @@
+import { SessionProvider } from './../../providers/session/session';
 import { LoginPage } from './../login/login';
 import { CadastroPage } from './../cadastro/cadastro';
 import { AboutPage } from './../about/about';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Usuario } from '../../models/usuario';
 
 /**
  * Generated class for the ConfigPage page.
@@ -19,8 +21,13 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class ConfigPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  usuarioLogado: Usuario;
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public session: SessionProvider
+  ) {  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConfigPage');
@@ -36,6 +43,7 @@ export class ConfigPage {
   }
 
   onClickLogout(){
+    this.session.remove();
     this.navCtrl.push(LoginPage);  
 
   }
