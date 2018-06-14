@@ -52,7 +52,7 @@ export class LoginPage {
     console.log(c);
 
     let loading = this.loadingCtrl.create({
-      content: 'Calma...'
+      content: 'Entrando...'
     });
     loading.present();
     
@@ -79,7 +79,7 @@ export class LoginPage {
         let alert = this.alertCtrl.create({
           title: 'Bem Vindo '+response.data.nome+' !!!',
           subTitle: response.message.toString(),
-          buttons: ['OKAY']
+          buttons: ['OK']
         });
         alert.present();
         this.navCtrl.setRoot(TabsPage);
@@ -91,7 +91,7 @@ export class LoginPage {
         let alert = this.alertCtrl.create({
           title: 'Aceite seu destino!!',
           subTitle: response.message.toString(),
-          buttons: ['OKAY']
+          buttons: ['OK']
         });
         alert.present();
       }

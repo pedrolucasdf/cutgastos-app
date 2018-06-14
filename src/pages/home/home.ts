@@ -1,6 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Chart } from 'chart.js';
+import { EletrodomesticoServiceProvider } from './../../providers/eletrodomestico-service/eletrodomestico-service';
+import { Usuario } from '../../models/usuario';
+import { JsonReturn } from './../../models/jsonReturn';
+
 
 
 /**
@@ -24,14 +28,32 @@ export class HomePage {
   barChart: any;
   lineChart: any;
   pieChart: any;
+  listaEletrodomesticos: any;
+  usuarioLogado : Usuario;
 
   //qty: any;
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+      public navCtrl: NavController,
+      public eletrodomesticoService: EletrodomesticoServiceProvider,
+      public loadingCtrl: LoadingController
+    ) {
 
+  }
+  refresh(){
+    let loading = this.loadingCtrl.create({
+      content: 'Calma...'
+    });
+    loading.present();
+
+    this.eletrodomesticoService.getMaioresConsumidores(this.usuarioLogado).subscribe((object : JsonReturn)=>{
+      this.listaEletrodomesticos = object.data;
+      loading.dismiss();
+    });
   }
   
   ionViewDidLoad() {
+
 
       this.barChart = new Chart(this.barCanvas.nativeElement, {
 
@@ -89,7 +111,7 @@ export class HomePage {
 
         type: 'pie',
         data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"], //DADOS = NOME DOS ELETRO, STRING
+            labels: this.listaEletrodomesticos.nome[0], 
             datasets: [{
              // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
                 data: [1, 2, 3, 4, 5, 6], // DADOS = DOUBLE KWH
