@@ -31,9 +31,11 @@ export class HomePage {
   lineChart: any;
   pieChart: any;
   maioresConsumidores: any;
+  consumoAnual: any;
+  consumoMensal:any;
   usuarioLogado : Usuario;
-  myDate: Date;
-  myYear: Date;
+  myDate: "1/2000";
+  myYear: "2000";
 
   //qty: any;
 
@@ -52,23 +54,23 @@ export class HomePage {
         content: 'Calma...'
       });
       loading.present();
-      this.eletrodomesticoService.getMaioresConsumidores(this.usuarioLogado).subscribe((object : JsonReturn)=>{
+
+       this.eletrodomesticoService.getMaioresConsumidores(this.usuarioLogado).subscribe((object : JsonReturn)=>{
         this.maioresConsumidores = object.data;
         debugger;
         loading.dismiss();
       });
 
-      this.eletrodomesticoService.consumoMensal(this.usuarioLogado, this.myDate.getMonth, this.myDate.getFullYear).subscribe((object : JsonReturn)=>{
-        this.maioresConsumidores = object.data;
+      /*this.eletrodomesticoService.consumoMensal(this.usuarioLogado, this.myDate, this.myDate).subscribe((object : JsonReturn)=>{
+        this.consumoMensal = object.data;
         debugger;
-        loading.dismiss();
       });
 
-      this.eletrodomesticoService.consumoAnual(this.usuarioLogado, this.myYear.getFullYear).subscribe((object : JsonReturn)=>{
-        this.maioresConsumidores = object.data;
+      this.eletrodomesticoService.consumoAnual(this.usuarioLogado, this.myYear).subscribe((object : JsonReturn)=>{
+        this.consumoAnual = object.data;
         debugger;
         loading.dismiss();
-      });
+      }); */
   }
   
   ionViewDidLoad() {
@@ -135,7 +137,7 @@ export class HomePage {
 
         type: 'pie',
         data: {
-            labels: this.maioresConsumidores.nome, //<<<<<
+            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
             datasets: [{
              // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
                 data: [1, 2, 3, 4, 5, 6], // DADOS = DOUBLE KWH

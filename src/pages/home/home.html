@@ -20,7 +20,7 @@
         </ion-card-header>
         <ion-item>
             <ion-label>Data</ion-label>
-+            <ion-datetime displayFormat="MMMM/YYYY" [(ngModel)]="myDate" placeholder="January/2000"></ion-datetime>    
+            <ion-datetime displayFormat="MMMM/YYYY" [(ngModel)]="myDate" placeholder="January/2000" yearValues="2010"></ion-datetime>    
         </ion-item>
         <ion-card-content>
           <canvas #lineCanvas></canvas>
@@ -31,7 +31,7 @@
       <ion-card-header>
         Consumo Mensal
       </ion-card-header>
-      <ion-item>    
+      <ion-item>
           <ion-label>Ano</ion-label>
           <ion-datetime displayFormat="YYYY" [(ngModel)]="myYear" placeholder="2000"></ion-datetime>
       </ion-item>
