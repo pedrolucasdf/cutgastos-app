@@ -48,6 +48,10 @@ export class EletrodomesticoServiceProvider {
     return this.http.get<JsonReturn>(API_ENDPOINT+"relatorio/consumo?ano="+ ano + "&"+ mes + "&usuarioId=" + usuario.id);
   }
 
+  valorConta(usuario: Usuario): Observable<JsonReturn>{
+    return this.http.get<JsonReturn>(API_ENDPOINT+"relatorio/valorConta?usuarioId=" + usuario.id);
+  }
+
   createEletrodomestico(eletrodomestico: Eletrodomestico): Observable<JsonReturn>{
     return this.http.post<JsonReturn>(API_ENDPOINT+"eletrodomestico", eletrodomestico);
   }
