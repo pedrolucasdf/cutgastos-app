@@ -69,6 +69,12 @@ export class LoginPage {
         //Login correto
         let usuario = Object.assign(new Usuario, response.data);
         this.session.create(usuario);
+        let alert = this.alertCtrl.create({
+          title: 'Bem Vindo '+response.data.nome+' !!!',
+          subTitle: response.message.toString(),
+          buttons: ['OKAY']
+        });
+        alert.present();
         this.navCtrl.setRoot(TabsPage);
         this.navCtrl.push(TabsPage);
       }
