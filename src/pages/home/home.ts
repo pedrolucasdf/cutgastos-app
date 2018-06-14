@@ -32,6 +32,8 @@ export class HomePage {
   pieChart: any;
   maioresConsumidores: any;
   usuarioLogado : Usuario;
+  myDate: Date;
+  myYear: Date;
 
   //qty: any;
 
@@ -52,7 +54,18 @@ export class HomePage {
       loading.present();
       this.eletrodomesticoService.getMaioresConsumidores(this.usuarioLogado).subscribe((object : JsonReturn)=>{
         this.maioresConsumidores = object.data;
-        console.log("TESTE     "  + this.maioresConsumidores);
+        debugger;
+        loading.dismiss();
+      });
+
+      this.eletrodomesticoService.consumoMensal(this.usuarioLogado, this.myDate.getMonth, this.myDate.getFullYear).subscribe((object : JsonReturn)=>{
+        this.maioresConsumidores = object.data;
+        debugger;
+        loading.dismiss();
+      });
+
+      this.eletrodomesticoService.consumoAnual(this.usuarioLogado, this.myYear.getFullYear).subscribe((object : JsonReturn)=>{
+        this.maioresConsumidores = object.data;
         debugger;
         loading.dismiss();
       });
@@ -122,7 +135,7 @@ export class HomePage {
 
         type: 'pie',
         data: {
-            labels: this.maioresConsumidores.nome[0], //<<<<<
+            labels: this.maioresConsumidores.nome, //<<<<<
             datasets: [{
              // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
                 data: [1, 2, 3, 4, 5, 6], // DADOS = DOUBLE KWH
