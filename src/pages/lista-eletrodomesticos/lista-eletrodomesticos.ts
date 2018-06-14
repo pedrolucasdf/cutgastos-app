@@ -2,7 +2,7 @@ import { JsonReturn } from './../../models/jsonReturn';
 import { EletrodomesticoServiceProvider } from './../../providers/eletrodomestico-service/eletrodomestico-service';
 import { CadastroEletrodomesticoPage } from './../cadastro-eletrodomestico/cadastro-eletrodomestico';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the ListaEletrodomesticosPage page.
@@ -20,15 +20,28 @@ export class ListaEletrodomesticosPage {
 
   listaEletrodomesticos: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, eletrodomesticoService: EletrodomesticoServiceProvider) {
-    eletrodomesticoService.getEletrodomesticos().subscribe((object : JsonReturn)=>{
-      this.listaEletrodomesticos = object.data;
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public eletrodomesticoService: EletrodomesticoServiceProvider,
+    public loadingCtrl: LoadingController
+  ) { }
+
+  refresh(){
+    let loading = this.loadingCtrl.create({
+      content: 'Calma...'
     });
-     
+    loading.present();
+
+    this.eletrodomesticoService.getEletrodomesticos().subscribe((object : JsonReturn)=>{
+      this.listaEletrodomesticos = object.data;
+      loading.dismiss();
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListaEletrodomesticosPage');
+    this.refresh();
   }
 
   onClickAdd(){
