@@ -49,6 +49,11 @@ export class LoginPage {
     let c = Object.assign(new Credenciais, this.loginForm.value);
     //let c = JSON.stringify(this.loginForm.value);
     console.log(c);
+
+    let loading = this.loadingCtrl.create({
+      content: 'Calma...'
+    });
+    loading.present();
     
      //Para realização de testes do funcionamento provider de sessão:
     /*let u = Object.assign(new Usuario,{
@@ -69,6 +74,7 @@ export class LoginPage {
         //Login correto
         let usuario = Object.assign(new Usuario, response.data);
         this.session.create(usuario);
+        loading.dismiss();
         let alert = this.alertCtrl.create({
           title: 'Bem Vindo '+response.data.nome+' !!!',
           subTitle: response.message.toString(),
@@ -80,6 +86,7 @@ export class LoginPage {
       }
       else{
         //Tratamento de erro
+        loading.dismiss();
         let alert = this.alertCtrl.create({
           title: 'Aceite seu destino!!',
           subTitle: response.message.toString(),
