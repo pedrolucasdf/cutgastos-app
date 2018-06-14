@@ -4,7 +4,7 @@ import { CadastroPage } from './../cadastro/cadastro';
 import { JsonReturn } from './../../models/jsonReturn';
 import { AuthServiceProvider } from './../../providers/auth-service/auth-service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { SessionProvider } from '../../providers/session/session';
 import { Usuario } from '../../models/usuario';
@@ -33,7 +33,8 @@ export class LoginPage {
     public formBuilder: FormBuilder,
     public authServiceProvider: AuthServiceProvider,
     public alertCtrl: AlertController,
-    public session: SessionProvider
+    public session: SessionProvider,
+    public loadingCtrl: LoadingController
   ) {}
 
   ionViewDidLoad() {
