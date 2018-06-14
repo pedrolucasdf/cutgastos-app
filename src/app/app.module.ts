@@ -98,7 +98,8 @@ import { SingUpServiceProvider } from '../providers/sing-up-service/sing-up-serv
     //Camera,
     //Keyboard,
     EletrodomesticoServiceProvider,
-    SessionProvider
+    SessionProvider,
+    SingUpServiceProvider
     
     
 
