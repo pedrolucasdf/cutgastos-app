@@ -44,6 +44,7 @@ export class ListaEletrodomesticosPage {
   }
 
   ionViewDidLoad() {
+    
     console.log('ionViewDidLoad ListaEletrodomesticosPage');
     this.session.get()
       .then(res => {

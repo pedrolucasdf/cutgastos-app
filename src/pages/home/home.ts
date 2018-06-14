@@ -4,6 +4,8 @@ import { Chart } from 'chart.js';
 import { EletrodomesticoServiceProvider } from './../../providers/eletrodomestico-service/eletrodomestico-service';
 import { Usuario } from '../../models/usuario';
 import { JsonReturn } from './../../models/jsonReturn';
+import { SessionProvider } from './../../providers/session/session';
+
 
 
 
@@ -36,24 +38,34 @@ export class HomePage {
   constructor(
       public navCtrl: NavController,
       public eletrodomesticoService: EletrodomesticoServiceProvider,
-      public loadingCtrl: LoadingController
+      public loadingCtrl: LoadingController,
+      public session: SessionProvider,
+
     ) {
 
   }
   refresh(){
     let loading = this.loadingCtrl.create({
-      content: 'Calma...'
-    });
-    loading.present();
-
-    this.eletrodomesticoService.getMaioresConsumidores(this.usuarioLogado).subscribe((object : JsonReturn)=>{
-      this.listaEletrodomesticos = object.data;
-      loading.dismiss();
-    });
+        content: 'Calma...'
+      });
+      loading.present();
+  
+      this.eletrodomesticoService.getMaioresConsumidores(this.usuarioLogado).subscribe((object : JsonReturn)=>{
+        this.listaEletrodomesticos = object.data;
+        loading.dismiss();
+        debugger;
+      });
   }
   
   ionViewDidLoad() {
 
+    this.session.get()
+      .then(res => {
+        this.usuarioLogado = Object.assign(new Usuario, res);
+        this.refresh();
+    });    
+
+    
 
       this.barChart = new Chart(this.barCanvas.nativeElement, {
 
@@ -111,7 +123,7 @@ export class HomePage {
 
         type: 'pie',
         data: {
-            labels: this.listaEletrodomesticos.nome[0], 
+            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"], //DADOS = NOME DOS ELETRO, STRING
             datasets: [{
              // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
                 data: [1, 2, 3, 4, 5, 6], // DADOS = DOUBLE KWH
