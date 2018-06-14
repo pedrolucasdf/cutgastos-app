@@ -5,7 +5,7 @@ import { JsonReturn } from './../../models/jsonReturn';
 import { AuthServiceProvider } from './../../providers/auth-service/auth-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { FormBuilder, FormGroup, Validator, Validators} from "@angular/forms";
+import { FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { SessionProvider } from '../../providers/session/session';
 import { Usuario } from '../../models/usuario';
 
@@ -32,7 +32,7 @@ export class LoginPage {
     public navParams: NavParams, 
     public formBuilder: FormBuilder,
     public authServiceProvider: AuthServiceProvider,
-    private alertCtrl: AlertController,
+    public alertCtrl: AlertController,
     public session: SessionProvider
   ) {}
 
@@ -50,8 +50,8 @@ export class LoginPage {
     //let c = JSON.stringify(this.loginForm.value);
     console.log(c);
     
-    /* //Para realização de testes do funcionamento provider de sessão:
-    let u = Object.assign(new Usuario,{
+     //Para realização de testes do funcionamento provider de sessão:
+    /*let u = Object.assign(new Usuario,{
       "id":"4",
       "nome": "teste",
       "cpf": "111111111",
@@ -76,7 +76,7 @@ export class LoginPage {
         //Tratamento de erro
         let alert = this.alertCtrl.create({
           title: 'Aceite seu destino!!',
-          subTitle: 'Credenciais incorretas ou não cadastradas!!!',
+          subTitle: response.message.toString(),
           buttons: ['OKAY']
         });
         alert.present();
