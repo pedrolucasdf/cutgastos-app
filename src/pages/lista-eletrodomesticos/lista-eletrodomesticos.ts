@@ -1,8 +1,10 @@
+import { SessionProvider } from './../../providers/session/session';
 import { JsonReturn } from './../../models/jsonReturn';
 import { EletrodomesticoServiceProvider } from './../../providers/eletrodomestico-service/eletrodomestico-service';
 import { CadastroEletrodomesticoPage } from './../cadastro-eletrodomestico/cadastro-eletrodomestico';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { Usuario } from '../../models/usuario';
 
 /**
  * Generated class for the ListaEletrodomesticosPage page.
@@ -19,11 +21,13 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 export class ListaEletrodomesticosPage {
 
   listaEletrodomesticos: any;
+  usuarioLogado : Usuario;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
     public eletrodomesticoService: EletrodomesticoServiceProvider,
+    public session: SessionProvider,
     public loadingCtrl: LoadingController
   ) { }
 
@@ -33,7 +37,7 @@ export class ListaEletrodomesticosPage {
     });
     loading.present();
 
-    this.eletrodomesticoService.getEletrodomesticos().subscribe((object : JsonReturn)=>{
+    this.eletrodomesticoService.getEletrodomesticoByUsuario(this.usuarioLogado).subscribe((object : JsonReturn)=>{
       this.listaEletrodomesticos = object.data;
       loading.dismiss();
     });
@@ -41,7 +45,11 @@ export class ListaEletrodomesticosPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListaEletrodomesticosPage');
-    this.refresh();
+    this.session.get()
+      .then(res => {
+        this.usuarioLogado = Object.assign(new Usuario, res);
+        this.refresh();
+    });    
   }
 
   onClickAdd(){
