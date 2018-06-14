@@ -26,6 +26,7 @@ export class CadastroEletrodomesticoPage {
   btnTexto : string;
   cadastroEletrodomesticoForm : FormGroup;
   usuarioLogado: Usuario;
+  isEdit: Boolean;
 
   constructor(
     public navCtrl: NavController, public navParams: NavParams, 
@@ -50,6 +51,7 @@ export class CadastroEletrodomesticoPage {
     {
       this.titulo = "Cadastrar Eletrodoméstico";
       this.btnTexto = "Cadastrar";
+      this.isEdit = false;
       this.cadastroEletrodomesticoForm = this.formBuilder.group({
         nome: this.formBuilder.control("", [Validators.required]),
         descricao: this.formBuilder.control("", [Validators.required]),
@@ -63,8 +65,11 @@ export class CadastroEletrodomesticoPage {
     else{
       this.titulo = "Edição";
       this.btnTexto = "Salvar";
+      this.isEdit = true;
       this.eletrodomestico = this.navParams.data;
       this.cadastroEletrodomesticoForm = this.formBuilder.group({
+        id : this.eletrodomestico.id,
+        usuario : this.usuarioLogado,
         nome: this.formBuilder.control(this.eletrodomestico.nome, [Validators.required]),
         descricao: this.formBuilder.control(this.eletrodomestico.descricao, [Validators.required]),
         quantidade: this.formBuilder.control(this.eletrodomestico.quantidade, [Validators.required]),
@@ -80,15 +85,30 @@ export class CadastroEletrodomesticoPage {
     let e = Object.assign(new Eletrodomestico, this.cadastroEletrodomesticoForm.value);
     //Adaptação técnica momentânea
     e.usuario = this.usuarioLogado;
+    debugger;
     console.log(e);
-    this.eletrodomesticoService.createEletrodomestico(e).subscribe((object: JsonReturn)=>{
-      if(object.message == 'SUCESSO'){
-        //Eletrodomestico cadastrado com sucesso
-      }
-      else{
-        //Tratamento de erro
-      }
-    });
+    if(this.isEdit){
+      this.eletrodomesticoService.updateEletrodomestico(e).subscribe((object: JsonReturn)=>{
+        if(object.message == 'SUCESSO'){
+          //Eletrodomestico cadastrado com sucesso
+        }
+        else{
+          //Tratamento de erro
+        }
+      });
+    }
+    else{
+      this.eletrodomesticoService.createEletrodomestico(e).subscribe((object: JsonReturn)=>{
+        if(object.message == 'SUCESSO'){
+          //Eletrodomestico cadastrado com sucesso
+        }
+        else{
+          //Tratamento de erro
+        }
+      });
+    }
+    
+
   }
   onClickTirarFoto(){
     //this.CameraProvider.TirarFoto();
