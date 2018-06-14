@@ -37,7 +37,7 @@ export class EletrodomesticoServiceProvider {
   }
 
   getMaioresConsumidores(usuario: Usuario): Observable<JsonReturn>{
-    return this.http.get<JsonReturn>(API_ENDPOINT+"relatorio/maioresConsumidores?usuarioId"+usuario.id);
+    return this.http.get<JsonReturn>(API_ENDPOINT+"relatorio/maioresConsumidores?usuarioId="+usuario.id);
   }
 
   createEletrodomestico(eletrodomestico: Eletrodomestico): Observable<JsonReturn>{

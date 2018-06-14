@@ -30,7 +30,7 @@ export class HomePage {
   barChart: any;
   lineChart: any;
   pieChart: any;
-  listaEletrodomesticos: any;
+  maioresConsumidores: any;
   usuarioLogado : Usuario;
 
   //qty: any;
@@ -45,15 +45,16 @@ export class HomePage {
 
   }
   refresh(){
+    debugger;
     let loading = this.loadingCtrl.create({
         content: 'Calma...'
       });
       loading.present();
-  
       this.eletrodomesticoService.getMaioresConsumidores(this.usuarioLogado).subscribe((object : JsonReturn)=>{
-        this.listaEletrodomesticos = object.data;
-        loading.dismiss();
+        this.maioresConsumidores = object.data;
+        console.log("TESTE     "  + this.maioresConsumidores);
         debugger;
+        loading.dismiss();
       });
   }
   
@@ -64,9 +65,7 @@ export class HomePage {
         this.usuarioLogado = Object.assign(new Usuario, res);
         this.refresh();
     });    
-
     
-
       this.barChart = new Chart(this.barCanvas.nativeElement, {
 
           type: 'bar',
@@ -123,7 +122,7 @@ export class HomePage {
 
         type: 'pie',
         data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"], //DADOS = NOME DOS ELETRO, STRING
+            labels: this.maioresConsumidores.nome[0], //<<<<<
             datasets: [{
              // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
                 data: [1, 2, 3, 4, 5, 6], // DADOS = DOUBLE KWH
