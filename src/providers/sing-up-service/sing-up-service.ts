@@ -1,21 +1,21 @@
-import { JsonReturn } from './../../models/jsonReturn'; 
 import { API_ENDPOINT } from './../../utils/constants'; 
-import { HttpClient } from '@angular/common/http'; 
-import { Injectable } from '@angular/core'; 
-import { Observable } from 'rxjs/Observable'; 
+import { JsonReturn } from './../../models/jsonReturn';
+import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/usuario';
 
 /*
-  Generated class for the SignInServiceProvider provider.
+  Generated class for the SingUpServiceProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class SignInServiceProvider {
+export class SingUpServiceProvider {
 
   constructor(public http: HttpClient) {
-    console.log('Hello SignInServiceProvider Provider');
+    console.log('Hello SingUpServiceProvider Provider');
   }
 
   createAccount(userData: Usuario): Observable<JsonReturn>{ 
@@ -33,5 +33,6 @@ export class SignInServiceProvider {
   deleteAccount(userData: Usuario): Observable<JsonReturn>{
     return this.http.delete<JsonReturn>(API_ENDPOINT+"usuario?id="+userData.id);
   }
+
 
 }

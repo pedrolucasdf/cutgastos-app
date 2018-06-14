@@ -1,7 +1,8 @@
-import { JsonReturn } from './../../models/jsonReturn'; 
-//import { SignInServiceProvider } from './../../providers/sign-in-service/sign-in-service';
+import { SingUpServiceProvider } from './../../providers/sing-up-service/sing-up-service';
+import { Usuario } from './../../models/usuario';
+import { JsonReturn } from './../../models/jsonReturn';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validator, Validators} from "@angular/forms";
 
 /**
@@ -24,7 +25,8 @@ export class CadastroPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public formBuilder: FormBuilder,
-    //public singIn: SignInServiceProvider
+    public singUp: SingUpServiceProvider,
+    public alertCtrl : AlertController
   ) {}
 
   ionViewDidLoad() {
@@ -41,15 +43,27 @@ export class CadastroPage {
   }
 
   onClickCadastro(){
-    /*this.singIn.createAccount(this.cadastroForm.value)
-    .subscribe((response: JsonReturn)=> {
+    let usuario = Object.assign(new Usuario, this.cadastroForm.value);
+    this.singUp.createAccount(usuario).subscribe((response: JsonReturn)=> {
       if(response.status === "SUCESSO"){
         //Cadastro realizado com sucesso
+        let alert = this.alertCtrl.create({
+          title: 'Aceite seu destino!!',
+          subTitle: response.message.toString(),
+          buttons: ['OKAY']
+        });
+        alert.present();
       }
       else{
         //Cadastro não pode ser realizado
+        let alert = this.alertCtrl.create({
+          title: 'Aceite seu destino!!',
+          subTitle: response.message.toString(),
+          buttons: ['OKAY']
+        });
+        alert.present();
       }
-    }).*/
+    })
     this.navCtrl.pop();
   }
 

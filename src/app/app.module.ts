@@ -33,6 +33,7 @@ import { Http, HttpModule } from '@angular/http';
 //import { CameraProvider } from '../providers/camera/camera';
 import { EletrodomesticoServiceProvider } from '../providers/eletrodomestico-service/eletrodomestico-service';
 import { SessionProvider } from '../providers/session/session';
+import { SingUpServiceProvider } from '../providers/sing-up-service/sing-up-service';
 
 
 
