@@ -3,7 +3,7 @@ import { JsonReturn } from './../../models/jsonReturn';
 import { EletrodomesticoServiceProvider } from './../../providers/eletrodomestico-service/eletrodomestico-service';
 import { CadastroEletrodomesticoPage } from './../cadastro-eletrodomestico/cadastro-eletrodomestico';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Usuario } from '../../models/usuario';
 
 /**
@@ -28,7 +28,8 @@ export class ListaEletrodomesticosPage {
     public navParams: NavParams, 
     public eletrodomesticoService: EletrodomesticoServiceProvider,
     public session: SessionProvider,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController
   ) { }
 
   refresh(){
@@ -61,4 +62,30 @@ export class ListaEletrodomesticosPage {
     this.navCtrl.push(CadastroEletrodomesticoPage, { "isEdit":true, "parentPage": this , "eletrodomestico": eletrodomestico});
   }
 
+  onClickDelete(eletrodomestico){
+    let alert = this.alertCtrl.create({
+      title: 'Deletar eletrodomestico',
+      subTitle: "Tem certeza que deseja excluir esse eletrodomestico",
+      buttons: [
+        {
+        text: 'Cancelar',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'OK',
+        handler: () => {
+          this.eletrodomesticoService.deleteEletrodomestico(eletrodomestico).subscribe((jsonReturn:JsonReturn)=>{
+            let alert2 = this.alertCtrl.create({
+              title: jsonReturn.message+'',
+              buttons: ['OK']
+            });
+            alert2.present();
+          });
+        }
+      }]});
+    alert.present();
+  }
 }
