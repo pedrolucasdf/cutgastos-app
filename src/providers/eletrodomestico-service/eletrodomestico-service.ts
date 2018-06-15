@@ -41,11 +41,11 @@ export class EletrodomesticoServiceProvider {
   }
 
   consumoAnual(usuario: Usuario, ano): Observable<JsonReturn>{
-    return this.http.get<JsonReturn>(API_ENDPOINT+"elatorio/consumo?ano="+ ano + "&usuarioId="+usuario.id);
+    return this.http.get<JsonReturn>(API_ENDPOINT+"relatorio/consumo?ano="+ ano + "&usuarioId="+usuario.id);
   }
 
   consumoMensal(usuario: Usuario, ano, mes): Observable<JsonReturn>{
-    return this.http.get<JsonReturn>(API_ENDPOINT+"relatorio/consumo?ano="+ ano + "&"+ mes + "&usuarioId=" + usuario.id);
+    return this.http.get<JsonReturn>(API_ENDPOINT+"relatorio/consumo?ano="+ ano + "&mes=" + mes + "&usuarioId=" + usuario.id);
   }
 
   valorConta(usuario: Usuario): Observable<JsonReturn>{

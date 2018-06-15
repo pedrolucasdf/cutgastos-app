@@ -89,7 +89,7 @@ export class CadastroEletrodomesticoPage {
     let e = Object.assign(new Eletrodomestico, this.cadastroEletrodomesticoForm.value);
     //Adaptação técnica momentânea
     e.usuario = this.usuarioLogado;
-    debugger;
+    
     console.log(e);
     if(this.isEdit){
       this.eletrodomesticoService.updateEletrodomestico(e).subscribe((object: JsonReturn)=>{
