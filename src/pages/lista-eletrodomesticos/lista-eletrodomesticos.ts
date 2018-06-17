@@ -71,21 +71,25 @@ export class ListaEletrodomesticosPage {
         text: 'Cancelar',
         role: 'cancel',
         handler: () => {
-          console.log('Cancel clicked');
+          this.refresh();
         }
       },
       {
         text: 'OK',
         handler: () => {
-          this.eletrodomesticoService.deleteEletrodomestico(eletrodomestico).subscribe((jsonReturn:JsonReturn)=>{
+          this.eletrodomesticoService.deleteEletrodomestico(eletrodomestico).subscribe((response:JsonReturn)=>{
             let alert2 = this.alertCtrl.create({
-              title: jsonReturn.message+'',
-              buttons: ['OK']
+              title: response.message+'',
+              buttons: [{
+                text : 'OK',
+                handler : _=> this.refresh()
+              }]
             });
             alert2.present();
           });
         }
       }]});
     alert.present();
+    
   }
 }
