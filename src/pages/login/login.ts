@@ -55,20 +55,6 @@ export class LoginPage {
       content: 'Entrando...'
     });
     loading.present();
-    
-     //Para realização de testes do funcionamento provider de sessão:
-    /*let u = Object.assign(new Usuario,{
-      "id":"4",
-      "nome": "teste",
-      "cpf": "111111111",
-      "email":"teste@gmail.com",
-      "senha":123
-    });
-
-    this.session.create(u);
-    this.navCtrl.setRoot(TabsPage);
-    this.navCtrl.push(TabsPage);
-    */
 
     this.authServiceProvider.autentication(c).subscribe((response: JsonReturn) => {
       if(response.status === "SUCESSO"){
