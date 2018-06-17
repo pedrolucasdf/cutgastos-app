@@ -4,7 +4,7 @@ import { Eletrodomestico } from './../../models/eletrodomestico';
 //import { CameraProvider } from './../../providers/camera/camera';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { SessionProvider } from '../../providers/session/session';
 import { Usuario } from '../../models/usuario';
 /**
@@ -33,17 +33,16 @@ export class CadastroEletrodomesticoPage {
     public formBuilder: FormBuilder,
     //public CameraProvider: CameraProvider,
     public eletrodomesticoService: EletrodomesticoServiceProvider,
-    public session: SessionProvider
+    public session: SessionProvider,
+    public loadingCtrl : LoadingController,
+    public alertCtrl: AlertController
   ) {}
 
   ngOnInit() {
     this.session.get()
       .then(res => {
         this.usuarioLogado = Object.assign(new Usuario, res);
-        console.log('usuário logado  >>> ',this.usuarioLogado);
       });
-  
-      console.log(this.session.exist());
   }
 
   ionViewWillLeave(){
@@ -89,25 +88,81 @@ export class CadastroEletrodomesticoPage {
     let e = Object.assign(new Eletrodomestico, this.cadastroEletrodomesticoForm.value);
     //Adaptação técnica momentânea
     e.usuario = this.usuarioLogado;
-    
-    console.log(e);
+
+    let loading = this.loadingCtrl.create({
+      content: 'Calma...'
+    });
+    loading.present();
+
     if(this.isEdit){
-      this.eletrodomesticoService.updateEletrodomestico(e).subscribe((object: JsonReturn)=>{
-        if(object.message == 'SUCESSO'){
+      this.eletrodomesticoService.updateEletrodomestico(e).subscribe((response: JsonReturn)=>{
+        debugger;
+        if(response.message == 'SUCESSO'){
           //Eletrodomestico cadastrado com sucesso
+          let alert = this.alertCtrl.create({
+            title: 'Aceite seu destino!!',
+            subTitle: response.message+'',
+            buttons: [
+              {
+              text: 'Ok',
+              handler: () => {
+                loading.dismiss();
+                this.navCtrl.pop();
+              }
+            }]
+          });
+          alert.present();
+          loading.dismiss();
         }
         else{
           //Tratamento de erro
+          let alert = this.alertCtrl.create({
+            title: 'Aceite seu destino!!',
+            subTitle: response.message+'',
+            buttons: [
+              {
+              text: 'Ok',
+              handler: () => {
+                loading.dismiss();
+              }
+            }]
+          });
+          alert.present();
         }
       });
     }
     else{
-      this.eletrodomesticoService.createEletrodomestico(e).subscribe((object: JsonReturn)=>{
-        if(object.message == 'SUCESSO'){
+      this.eletrodomesticoService.createEletrodomestico(e).subscribe((response: JsonReturn)=>{
+        if(response.message == 'SUCESSO'){
           //Eletrodomestico cadastrado com sucesso
+          let alert = this.alertCtrl.create({
+            title: 'Aceite seu destino!!',
+            subTitle: response.message+'',
+            buttons: [
+              {
+              text: 'Ok',
+              handler: () => {
+                loading.dismiss();
+                this.navCtrl.pop();
+              }
+            }]
+          });
+          alert.present();
         }
         else{
           //Tratamento de erro
+          let alert = this.alertCtrl.create({
+            title: 'Aceite seu destino!!',
+            subTitle: response.message+'',
+            buttons: [
+              {
+              text: 'Ok',
+              handler: () => {
+                loading.dismiss();
+              }
+            }]
+          });
+          alert.present();
         }
       });
     }
