@@ -5,24 +5,26 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <!--<ion-navbar>
+  <ion-navbar>
     <ion-title>Lista de Eletrodomésticos</ion-title>
-  </ion-navbar>-->
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-list>
     <ion-card class="card" *ngFor="let eletrodomestico of listaEletrodomesticos" >
+        <ion-card-header>
+            <div class="dados-eletrodomestico">
+                {{eletrodomestico.nome}}</div>
+          </ion-card-header>
       <ion-row>
         <ion-col center text-center>
-          <div class="dados-eletrodomestico col-3">
-            <ion-label class="labelElem" color="primary" stacked>Nome</ion-label>
-            {{eletrodomestico.nome}}</div>
+          
         </ion-col>
 
         <ion-col center text-center>
-          <div class="dados-eletrodomestico col-3">
-            <ion-label class="labelElem"  color="primary" stacked>Potencia uso</ion-label>
+          <div class="potenc-eletrodomestico col-4">
+            <ion-label class="labelElem"  color="secondary" stacked>Potencia uso</ion-label>
             {{eletrodomestico.potenciaUso}}</div>
         </ion-col>
 
@@ -33,13 +35,13 @@
 
         <ion-col center text-center>
           <button ion-button item-end clear (click)="onClickEdit(eletrodomestico)">
-            <ion-icon class="adicionarBtn col-3"name="ios-create-outline"></ion-icon>
+            <ion-icon class="adicionarBtn col-4"name="ios-create-outline"></ion-icon>
           </button>
         </ion-col>
 
         <ion-col center text-center>
           <button ion-button item-end clear (click)="onClickDelete(eletrodomestico)">
-            <ion-icon class="adicionarBtn col-3"name="ios-create-outline"></ion-icon>
+            <ion-icon class="deleteBtn col-4" ios="ios-trash" md="md-trash"></ion-icon>
           </button>
         </ion-col>
 
