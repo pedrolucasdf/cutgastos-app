@@ -29,11 +29,11 @@ export class EletrodomesticoServiceProvider {
   }
 
   getEletrodomesticoByUsuario(usuario: Usuario): Observable<JsonReturn>{
-    return this.http.get<JsonReturn>(API_ENDPOINT+"eletrodomestico?usuario_id="+usuario.id);
+    return this.http.get<JsonReturn>(API_ENDPOINT+"eletrodomestico?usuarioId="+usuario.id);
   }
 
   getEletrodomesticoByPotencia(usuario: Usuario, eletrodomestico: Eletrodomestico): Observable<JsonReturn>{
-    return this.http.get<JsonReturn>(API_ENDPOINT+"eletrodomestico?usuario_id="+usuario.id+"&potencia_uso="+eletrodomestico.potenciaUso);
+    return this.http.get<JsonReturn>(API_ENDPOINT+"eletrodomestico?usuarioId="+usuario.id+"&potencia_uso="+eletrodomestico.potenciaUso);
   }
 
   getMaioresConsumidores(usuario: Usuario): Observable<JsonReturn>{
@@ -63,7 +63,4 @@ export class EletrodomesticoServiceProvider {
   deleteEletrodomestico(eletrodomestico: Eletrodomestico): Observable<JsonReturn>{
     return this.http.delete<JsonReturn>(API_ENDPOINT+"eletrodomestico?id="+eletrodomestico.id);
   }
-
-  
-
 }
