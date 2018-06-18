@@ -20,7 +20,7 @@
         </ion-card-header>
         <ion-item>
             <ion-label>Data</ion-label>
-            <ion-datetime displayFormat="MMMM/YYYY" [(ngModel)]="myDate" placeholder="January/2000" pickerFormat="MM YYYY"  min="2000-01-01"></ion-datetime>    
+            <ion-datetime displayFormat="MMMM/YYYY" [(ngModel)]="myDate" placeholder="January/2000" pickerFormat="MM YYYY"  min="2000-01-01" (ionChange)="refresh()"></ion-datetime>    
         </ion-item>
         <ion-card-content>
           <canvas #lineCanvas></canvas>
@@ -33,7 +33,7 @@
       </ion-card-header>
       <ion-item>
           <ion-label>Ano</ion-label>
-          <ion-datetime displayFormat="YYYY" [(ngModel)]="myYear" placeholder="2000" min="2000"></ion-datetime>
+          <ion-datetime displayFormat="YYYY" [(ngModel)]="myYear" placeholder="2000" min="2000" (ionChange)="refresh()"></ion-datetime>
       </ion-item>
       <ion-card-content>
         <canvas #barCanvas></canvas>

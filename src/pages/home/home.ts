@@ -54,8 +54,6 @@ export class HomePage {
   }
 
   refresh(){
-    console.log("MYDATE >> " + this.myDate.substr(5, 6), + " << e " + " MYYEAR " + this.myYear);
-
         
        this.eletrodomesticoService.getMaioresConsumidores(this.usuarioLogado).subscribe((object : JsonReturn)=>{
         this.pieChart = new Chart(this.pieCanvas.nativeElement, {
@@ -183,37 +181,26 @@ export class HomePage {
   
         });
       });
-  }
-  ionViewDidEnter(){
-    this.refresh();
-}
-  ionViewDidLoad() {
 
-    this.session.get()
-      .then(res => {
-        this.usuarioLogado = Object.assign(new Usuario, res);
-        this.refresh();
-    });
       
+      this.eletrodomesticoService.valorConta(this.usuarioLogado).subscribe((object : JsonReturn)=>{
+      this.barContasChart = new Chart(this.barContas.nativeElement, {
 
-  this.barContasChart = new Chart(this.barContas.nativeElement, {
-
-        type: 'bar',
+        type: 'horizontalBar',
         data: {
             labels: ["Verde", "Amarelo", "Vermelho"],
             datasets: [{
                 label: 'Preço',
-                data: [12, 19, 25], // DADOS RECEBIDOS DO SERVIDOR DOUBLE KW/H MENSAIS
+                data: object.data, // DADOS RECEBIDOS DO SERVIDOR DOUBLE KW/H MENSAIS
                 backgroundColor: [
-                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(68, 156, 45, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
                     'rgba(255, 99, 132, 0.2)',
                 ],
                 borderColor: [
-                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(68, 156, 45, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 99, 132, 0.2)',
-                 
+                    'rgba(255, 99, 132, 0.2)',    
                 ],
                 borderWidth: 1
             }]
@@ -229,10 +216,17 @@ export class HomePage {
         }
 
     });
-      
+  });
+}
+  ionViewDidEnter(){
+    this.refresh();
+}
+  ionViewDidLoad() {
 
-      
-
-      
+    this.session.get()
+      .then(res => {
+        this.usuarioLogado = Object.assign(new Usuario, res);
+        this.refresh();
+    }); 
   }
 }
