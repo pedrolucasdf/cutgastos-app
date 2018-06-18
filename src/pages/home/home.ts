@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, DateTime } from 'ionic-angular';
 import { Chart } from 'chart.js';
 import { EletrodomesticoServiceProvider } from './../../providers/eletrodomestico-service/eletrodomestico-service';
 import { Usuario } from '../../models/usuario';
@@ -36,8 +36,9 @@ export class HomePage {
   consumoAnual: any;
   consumoMensal:any;
   usuarioLogado : Usuario;
-  myDate: "1/2000";
-  myYear: "2000";
+  myDate: String;
+  myYear: String;
+
 
   //qty: any;
 
@@ -48,9 +49,12 @@ export class HomePage {
       public session: SessionProvider,
 
     ) {
-
+        this.myDate = "2018-06";
+        this.myYear = "2018";
   }
+
   refresh(){
+    console.log("MYDATE >> " + this.myDate.substr(5, 6), + " << e " + " MYYEAR " + this.myYear);
 
         
        this.eletrodomesticoService.getMaioresConsumidores(this.usuarioLogado).subscribe((object : JsonReturn)=>{
@@ -84,7 +88,7 @@ export class HomePage {
         });
       });
 
-      this.eletrodomesticoService.consumoMensal(this.usuarioLogado, this.myDate, this.myDate).subscribe((object : JsonReturn)=>{
+      this.eletrodomesticoService.consumoMensal(this.usuarioLogado, this.myDate.substr(5, 6), this.myDate.substr(0, 3)).subscribe((object : JsonReturn)=>{
         this.lineChart = new Chart(this.lineCanvas.nativeElement, {
 
             type: 'line',
@@ -180,15 +184,16 @@ export class HomePage {
         });
       });
   }
-  
+  ionViewDidEnter(){
+    this.refresh();
+}
   ionViewDidLoad() {
 
     this.session.get()
       .then(res => {
         this.usuarioLogado = Object.assign(new Usuario, res);
         this.refresh();
-    });    
-    
+    });
       
 
   this.barContasChart = new Chart(this.barContas.nativeElement, {
