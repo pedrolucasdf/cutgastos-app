@@ -4,7 +4,6 @@ import { CadastroPage } from './../cadastro/cadastro';
 import { AboutPage } from './../about/about';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Usuario } from '../../models/usuario';
 
 /**
@@ -29,6 +28,13 @@ export class ConfigPage {
     public session: SessionProvider
   ) {  }
 
+  ngOnInit() {
+    this.session.get()
+      .then(res => {
+        this.usuarioLogado = Object.assign(new Usuario, res);
+      });
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConfigPage');
   }
@@ -38,13 +44,11 @@ export class ConfigPage {
   }
 
   onClickEdit(){
-    this.navCtrl.push(CadastroPage);  
-
+    this.navCtrl.push(CadastroPage, { "isEdit":true, "parentPage": this , "usuarioLogado": this.usuarioLogado});
   }
 
   onClickLogout(){
     this.session.remove();
-    this.navCtrl.push(LoginPage);  
-
+    this.navCtrl.push(LoginPage);
   }
 }

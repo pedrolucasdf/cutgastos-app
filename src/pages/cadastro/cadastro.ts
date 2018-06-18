@@ -1,3 +1,4 @@
+import { SessionProvider } from './../../providers/session/session';
 import { SingUpServiceProvider } from './../../providers/sing-up-service/sing-up-service';
 import { Usuario } from './../../models/usuario';
 import { JsonReturn } from './../../models/jsonReturn';
@@ -19,6 +20,9 @@ import { FormBuilder, FormGroup, Validator, Validators} from "@angular/forms";
 })
 export class CadastroPage {
 
+  titulo : string;
+  btnTexto : string;
+  usuarioLogado : Usuario;
   cadastroForm: FormGroup;
 
   constructor(
@@ -27,20 +31,41 @@ export class CadastroPage {
     public formBuilder: FormBuilder,
     public singUp: SingUpServiceProvider,
     public alertCtrl : AlertController,
-    public loadingCtrl : LoadingController
+    public loadingCtrl : LoadingController,
+    public session: SessionProvider
   ) {}
 
   ionViewDidLoad() {
-    this.cadastroForm = this.formBuilder.group({
-      cpf : this.formBuilder.control("", [Validators.required]),
-      nome : this.formBuilder.control("", [Validators.required]),
-      endereco : this.formBuilder.control("", [Validators.required]),
-      email : this.formBuilder.control("", [Validators.required]),
-      senha : this.formBuilder.control("", [Validators.required]),
-      telefone : this.formBuilder.control("", [Validators.required]),
-      nascimento : this.formBuilder.control("", [Validators.required]),
-      sexo : this.formBuilder.control("", [Validators.required])
-    }) 
+    if(!this.navParams.get("isEdit")){
+      this.titulo = "Cadastrar Nova Conta";
+      this.btnTexto = "Cadastrar";
+      this.cadastroForm = this.formBuilder.group({
+        cpf : this.formBuilder.control("", [Validators.required]),
+        nome : this.formBuilder.control("", [Validators.required]),
+        endereco : this.formBuilder.control("", [Validators.required]),
+        email : this.formBuilder.control("", [Validators.required]),
+        senha : this.formBuilder.control("", [Validators.required]),
+        telefone : this.formBuilder.control("", [Validators.required]),
+        nascimento : this.formBuilder.control("", [Validators.required]),
+        sexo : this.formBuilder.control("", [Validators.required])
+      })
+    }
+    else{
+      this.titulo = "Edição";
+      this.btnTexto = "Salvar";
+      this.usuarioLogado = this.navParams.get("usuarioLogado");
+      this.cadastroForm = this.formBuilder.group({
+        cpf : this.formBuilder.control(this.usuarioLogado.cpf, [Validators.required]),
+        nome : this.formBuilder.control(this.usuarioLogado.nome, [Validators.required]),
+        endereco : this.formBuilder.control("", [Validators.required]),
+        email : this.formBuilder.control(this.usuarioLogado.email, [Validators.required]),
+        senha : this.formBuilder.control("", [Validators.required]),
+        telefone : this.formBuilder.control("", [Validators.required]),
+        nascimento : this.formBuilder.control("", [Validators.required]),
+        sexo : this.formBuilder.control("", [Validators.required])
+      })
+
+    }     
   }
 
   onClickCadastro(){
@@ -53,41 +78,80 @@ export class CadastroPage {
     let usuario = Object.assign(new Usuario, this.cadastroForm.value);
     usuario.cpf = usuario.cpf.replace(/[-.]/g, '');
 
-    this.singUp.createAccount(usuario).subscribe((response: JsonReturn)=> {
-      console.log(response);
-      if(response.status == 'SUCESSO'){
-        //Cadastro realizado com sucesso
-        let alert = this.alertCtrl.create({
-          title: 'Aceite seu destino!!',
-          subTitle: 'Usuário cadastrado com sucesso',
-          buttons: [
-            {
-            text: 'Ok',
-            handler: () => {
-              loading.dismiss();
-            }
-          }]
-        });
-        alert.present();
-        this.navCtrl.pop();
-      }
-      else{
-        //Cadastro não pode ser realizado
-        let alert = this.alertCtrl.create({
-          title: 'Aceite seu destino!!',
-          subTitle: response.message+'',
-          buttons: [
-            {
-            text: 'Ok',
-            handler: () => {
-              loading.dismiss();
-              this.navCtrl.pop();
-            }
-          }]
-        });
-        alert.present();
-      }
-    })
+    if(this.navParams.get("isEdit")){
+      this.singUp.updateAccount(usuario).subscribe((response: JsonReturn)=> {
+        if(response.status == 'SUCESSO'){
+          //Cadastro realizado com sucesso
+          let alert = this.alertCtrl.create({
+            title: 'Aceite seu destino!!',
+            subTitle: 'Usuário cadastrado com sucesso',
+            buttons: [
+              {
+              text: 'Ok',
+              handler: () => {
+                loading.dismiss();
+              }
+            }]
+          });
+          alert.present();
+          this.navCtrl.pop();
+        }
+        else{
+          //Cadastro não pode ser realizado
+          let alert = this.alertCtrl.create({
+            title: 'Aceite seu destino!!',
+            subTitle: response.message+'',
+            buttons: [
+              {
+              text: 'Ok',
+              handler: () => {
+                loading.dismiss();
+                this.navCtrl.pop();
+              }
+            }]
+          });
+          alert.present();
+        }
+      });
+
+    }
+    else{
+      this.singUp.createAccount(usuario).subscribe((response: JsonReturn)=> {
+        console.log(response);
+        if(response.status == 'SUCESSO'){
+          //Cadastro realizado com sucesso
+          let alert = this.alertCtrl.create({
+            title: 'Aceite seu destino!!',
+            subTitle: 'Usuário cadastrado com sucesso',
+            buttons: [
+              {
+              text: 'Ok',
+              handler: () => {
+                loading.dismiss();
+              }
+            }]
+          });
+          alert.present();
+          this.navCtrl.pop();
+        }
+        else{
+          //Cadastro não pode ser realizado
+          let alert = this.alertCtrl.create({
+            title: 'Aceite seu destino!!',
+            subTitle: response.message+'',
+            buttons: [
+              {
+              text: 'Ok',
+              handler: () => {
+                loading.dismiss();
+                this.navCtrl.pop();
+              }
+            }]
+          });
+          alert.present();
+        }
+      });      
+    }
   }
 
 }
