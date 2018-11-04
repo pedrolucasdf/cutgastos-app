@@ -7,7 +7,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { BodyTextChatComponent } from './../components/body-text-chat/body-text-chat';
 import { TextChatComponent } from './../components/text-chat/text-chat';
 import { IonicStorageModule } from '@ionic/storage';
-//import { Camera } from '@ionic-native/camera'
+import { Camera } from '@ionic-native/camera'
+import { Base64ToGallery } from '@ionic-native/base64-to-gallery';
 //import { Keyboard } from '@ionic-native/keyboard';
 
 
@@ -30,7 +31,7 @@ import { CallChatProvider } from '../providers/call-chat/call-chat';
 import { AlertController } from 'ionic-angular';
 import { SaveDataProvider } from '../providers/save-data/save-data';
 import { Http, HttpModule } from '@angular/http';
-//import { CameraProvider } from '../providers/camera/camera';
+import { CameraProvider } from '../providers/camera/camera';
 import { EletrodomesticoServiceProvider } from '../providers/eletrodomestico-service/eletrodomestico-service';
 import { SessionProvider } from '../providers/session/session';
 import { SingUpServiceProvider } from '../providers/sing-up-service/sing-up-service';
@@ -93,9 +94,10 @@ import { SingUpServiceProvider } from '../providers/sing-up-service/sing-up-serv
     AlertController,
     CallChatProvider,
     SaveDataProvider,
-    //CameraProvider,
+    CameraProvider,
     BodyTextChatComponent,
-    //Camera,
+    Camera,
+    Base64ToGallery,
     //Keyboard,
     EletrodomesticoServiceProvider,
     SessionProvider,

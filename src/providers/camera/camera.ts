@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-
+import { Base64ToGallery } from '@ionic-native/base64-to-gallery'
 
 /*
   Generated class for the CameraProvider provider.
@@ -12,7 +12,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 @Injectable()
 export class CameraProvider {
 
-  constructor(public http: HttpClient, private Camera: Camera) {
+  constructor(public http: HttpClient, private Camera: Camera, private base64ToGallery: Base64ToGallery) {
     console.log('Hello CameraProvider Provider');
   }
 
@@ -24,8 +24,11 @@ export class CameraProvider {
       quality: 100,
       destinationType: this.Camera.DestinationType.DATA_URL,
       encodingType: this.Camera.EncodingType.JPEG,
-      mediaType: this.Camera.MediaType.PICTURE
+      mediaType: this.Camera.MediaType.PICTURE,
+      saveToPhotoAlbum: true
     }
+
+  
 
     this.Camera.getPicture(options).then((imageData) => {
       // imageData is either a base64 encoded string or a file URI

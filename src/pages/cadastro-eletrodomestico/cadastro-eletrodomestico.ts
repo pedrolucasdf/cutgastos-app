@@ -1,7 +1,7 @@
 import { JsonReturn } from './../../models/jsonReturn';
 import { EletrodomesticoServiceProvider } from './../../providers/eletrodomestico-service/eletrodomestico-service';
 import { Eletrodomestico } from './../../models/eletrodomestico';
-//import { CameraProvider } from './../../providers/camera/camera';
+import { CameraProvider } from './../../providers/camera/camera';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
@@ -31,7 +31,7 @@ export class CadastroEletrodomesticoPage {
   constructor(
     public navCtrl: NavController, public navParams: NavParams, 
     public formBuilder: FormBuilder,
-    //public CameraProvider: CameraProvider,
+    public CameraProvider: CameraProvider,
     public eletrodomesticoService: EletrodomesticoServiceProvider,
     public session: SessionProvider,
     public loadingCtrl : LoadingController,
@@ -170,6 +170,6 @@ export class CadastroEletrodomesticoPage {
 
   }
   onClickTirarFoto(){
-    //this.CameraProvider.TirarFoto();
+    this.CameraProvider.TirarFoto();
   }
 }
